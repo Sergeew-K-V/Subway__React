@@ -1,6 +1,5 @@
 import '../css/app.css'
-import Menu from './Menu'
-
+import Navbar from './Navbar/Navbar'
 function App() {
   return (
     <div className='app'>
@@ -16,23 +15,7 @@ function App() {
       <main className='main'>
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
-            <div className='navbar__block'>
-              <div className='navbar__top'>
-                <div className='navbar__menu-block' id='menu__root'>
-                  <Menu></Menu>
-                </div>
-              </div>
-              <div className='navbar__middle'>
-                <div className='navbar__btn-custom'>
-                  <button id='btn-custom'>
-                    <span>Собрать свой</span>
-                  </button>
-                </div>
-              </div>
-              <div className='navbar__bottom' id='basket-root'>
-                {/* <!-- Here is a basket --> */}
-              </div>
-            </div>
+            <Navbar></Navbar>
           </div>
         </div>
       </main>
