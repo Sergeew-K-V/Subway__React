@@ -996,6 +996,10 @@ body {
   position: relative;
 }
 
+.app {
+  position: relative;
+}
+
 .main__block {
   margin-top: 20px;
   display: -webkit-box;

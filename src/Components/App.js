@@ -1,8 +1,10 @@
 import '../css/app.css'
+import ModalFillings from './Modals/ModalFillings'
 import Navbar from './Navbar/Navbar'
 function App() {
   return (
     <div className='app'>
+      <ModalFillings></ModalFillings>
       <header className='header'>
         <div className='container-middle'>
           <div className='header__block'>
