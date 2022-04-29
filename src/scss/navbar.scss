@@ -10,7 +10,7 @@ $text-white: white;
   &__block {
     padding-right: 30px;
     flex: 1 1 25%;
-    max-width: 400px;
+    max-width: 300px;
   }
   &__top {
     text-align: center;
@@ -141,6 +141,10 @@ $text-white: white;
     border-bottom-right-radius: $basket-bg-border-radius;
     background-color: $bg-basket;
   }
+
+  &__bas-icon-svg {
+    min-height: 36px;
+  }
   &__btn button {
     position: relative;
     left: 50%;
@@ -163,9 +167,6 @@ $text-white: white;
   &__btn button:hover {
     background-color: rgb(219, 157, 24);
   }
-}
-.fa-solid {
-  position: relative;
 }
 .icon-shadow {
   position: absolute;

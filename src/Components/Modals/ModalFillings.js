@@ -1,20 +1,25 @@
 import react from 'react'
-import '../../css/modalFillings.css'
+import '../../css/modal-fillings.css'
 
-function ModalFillings() {
+function ModalFillings({ active, setActive }) {
   return (
-    <div className='modalFillings'>
-      <form className='modalFillings__form'>
-        <div className='modalFillings__content'>
-          <div className='modalFillings__close'>
+    <div className='modal-fillings'>
+      <form className='modal-fillings__form'>
+        <div className='modal-fillings__content'>
+          <div
+            className='modal-fillings__close'
+            onClick={() => {
+              setActive(false)
+            }}
+          >
             <span></span>
           </div>
-          <p className='modalFillings__item'>Название</p>
-          <input type='text' className='modalFillings__input modalFillings__item' />
-          <p className='modalFillings__item'>Цена</p>
-          <input type='number' className='modalFillings__input modalFillings__item' />
-          <p className='modalFillings__item'>Тип начинки</p>
-          <select className='modalFillings__item modalFillings__select'>
+          <p className='modal-fillings__item'>Название</p>
+          <input type='text' className='modal-fillings__input modal-fillings__item' />
+          <p className='modal-fillings__item'>Цена</p>
+          <input type='number' className='modal-fillings__input modal-fillings__item' />
+          <p className='modal-fillings__item'>Тип начинки</p>
+          <select className='modal-fillings__item modal-fillings__select'>
             <option value='sizes' key='sizes'>
               Размер
             </option>
@@ -31,7 +36,7 @@ function ModalFillings() {
               Начинка
             </option>
           </select>
-          <button className='modalFillings__btn modalFillings__item modal__btn'>Добавить</button>
+          <button className='modal-fillings__btn modal-fillings__item modal__btn'>Добавить</button>
         </div>
       </form>
     </div>

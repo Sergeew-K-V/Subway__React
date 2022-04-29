@@ -105,7 +105,7 @@ h6 {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 25%;
           flex: 1 1 25%;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .navbar__top {
@@ -250,6 +250,10 @@ h6 {
   background-color: #ebda7a;
 }
 
+.basket__bas-icon-svg {
+  min-height: 36px;
+}
+
 .basket__btn button {
   position: relative;
   left: 50%;
@@ -277,10 +281,6 @@ h6 {
 
 .basket__btn button:hover {
   background-color: #db9d18;
-}
-
-.fa-solid {
-  position: relative;
 }
 
 .icon-shadow {

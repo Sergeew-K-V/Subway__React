@@ -1,8 +1,13 @@
 import React from 'react'
 
-function Fillings() {
+function Fillings({ modalControls }) {
   return (
-    <div className='navbar__btn-custom'>
+    <div
+      className='navbar__btn-custom'
+      onClick={() => {
+        modalControls(true)
+      }}
+    >
       <button id='btn-fillings'>
         <span>Добавить начинку</span>
       </button>

@@ -5,7 +5,7 @@ import Custom from './Buttons/Custom'
 import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
 
-function Navbar() {
+function Navbar({ modalControls }) {
   return (
     <div className='navbar__block'>
       <div className='navbar__top'>
@@ -14,7 +14,7 @@ function Navbar() {
         </div>
       </div>
       <div className='navbar__middle'>
-        <Fillings></Fillings>
+        <Fillings modalControls={modalControls}></Fillings>
         <ProductBtn></ProductBtn>
         <Custom></Custom>
       </div>
