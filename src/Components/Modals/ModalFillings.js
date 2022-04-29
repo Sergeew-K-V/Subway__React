@@ -1,10 +1,15 @@
 import react from 'react'
 import '../../css/modal-fillings.css'
 
-function ModalFillings({ active, setActive }) {
+function ModalFillings({ setActive }) {
   return (
     <div className='modal-fillings'>
-      <form className='modal-fillings__form'>
+      <form
+        className='modal-fillings__form'
+        onSubmit={(e) => {
+          e.preventDefault()
+        }}
+      >
         <div className='modal-fillings__content'>
           <div
             className='modal-fillings__close'
