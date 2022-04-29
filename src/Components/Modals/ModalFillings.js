@@ -6,6 +6,9 @@ function ModalFillings() {
     <div className='modalFillings'>
       <form className='modalFillings__form'>
         <div className='modalFillings__content'>
+          <div className='modalFillings__close'>
+            <span></span>
+          </div>
           <p className='modalFillings__item'>Название</p>
           <input type='text' className='modalFillings__input modalFillings__item' />
           <p className='modalFillings__item'>Цена</p>

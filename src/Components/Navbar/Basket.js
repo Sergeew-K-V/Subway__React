@@ -1,36 +1,39 @@
 import React from 'react'
+import basket from '../../img/layout/basket-shopping-solid.svg'
 
 function Basket() {
   return (
-    <div class='navbar__basket-block' id='basket-subRoot'>
-      <div class='basket__flex'>
-        <div class='basket__header'>
-          <div class='basket__icon'>
-            <span class='icon-shadow'></span>
-            <i class='fa-solid fa-basket-shopping'></i>
+    <div className='navbar__basket-block' id='basket-subRoot'>
+      <div className='basket__flex'>
+        <div className='basket__header'>
+          <div className='basket__icon'>
+            <span className='icon-shadow'></span>
+            {/* <i className='fa-solid fa-basket-shopping'> */}
+            {/* </i> */}
+            {/* <img src={basket} alt='basket' /> */}
           </div>
-          <div class='basket__title'>
+          <div className='basket__title'>
             <span>Название</span>
           </div>
         </div>
-        <div class='basket__body' id='place-for-body-item'>
-          <div class='body__top'>
-            <div class='body__name'>
+        <div className='basket__body' id='place-for-body-item'>
+          <div className='body__top'>
+            <div className='body__name'>
               <span>Название</span>
             </div>
-            <div class='body__quantity'>
+            <div className='body__quantity'>
               <span>Количество</span>
             </div>
           </div>
-          <div class='body__bottom' id='array__wrapper'></div>
+          <div className='body__bottom' id='array__wrapper'></div>
           {/* <!-- Тут будут появляться добавленнные товары --> */}
         </div>
-        <div class='basket__footer' id='place-price'>
-          <div class='basket__total'>
+        <div className='basket__footer' id='place-price'>
+          <div className='basket__total'>
             <span>Итого: руб.</span>
           </div>
         </div>
-        <div class='basket__btn'>
+        <div className='basket__btn'>
           <button>
             <span>Оформить заказ</span>
           </button>
