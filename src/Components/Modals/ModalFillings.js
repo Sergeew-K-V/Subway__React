@@ -1,7 +1,7 @@
 import react from 'react'
 import '../../css/modal-fillings.css'
 
-function ModalFillings({ setActive }) {
+function ModalFillings({ setModalFillingsActive }) {
   return (
     <div className='modal-fillings'>
       <form
@@ -14,7 +14,7 @@ function ModalFillings({ setActive }) {
           <div
             className='modal-fillings__close'
             onClick={() => {
-              setActive(false)
+              setModalFillingsActive(false)
             }}
           >
             <span></span>

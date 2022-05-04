@@ -4,10 +4,10 @@ import Main from './Main/Main'
 import ModalFillings from './Modals/ModalFillings'
 import Navbar from './Navbar/Navbar'
 function App() {
-  const [modalActive, setModalActive] = useState(false)
+  const [modalFillingsActive, setModalFillingsActive] = useState(false)
   return (
     <div className='app'>
-      {modalActive && <ModalFillings setActive={setModalActive}></ModalFillings>}
+      {modalFillingsActive && <ModalFillings setActive={setModalFillingsActive}></ModalFillings>}
       <header className='header'>
         <div className='container-middle'>
           <div className='header__block'>
@@ -20,7 +20,7 @@ function App() {
       <main className='main'>
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
-            <Navbar modalControls={setModalActive}></Navbar>
+            <Navbar modalControls={setModalFillingsActive}></Navbar>
             <Main></Main>
           </div>
         </div>
