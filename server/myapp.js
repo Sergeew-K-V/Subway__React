@@ -2,7 +2,7 @@ const data = require('../data.json')
 const express = require('express')
 
 const mongoose = require('mongoose')
-const schemaOfFillings = require('./models/schemaOfFillings')
+const { CreateFilling } = require('./controllers/FillingsController')
 
 const mongoDb = 'mongodb://127.0.0.1:27017/'
 
@@ -25,6 +25,19 @@ async function startServer() {
       res.send(data)
     })
 
+    app.post('/fillings', CreateFilling)
+    // restful
+
+    /**
+     * GET /fillings
+     * GET /fillings/:id
+     * POST /fillings
+     * PATCH /fillings/:id
+     * DELETE /fillings/:id
+     */
+
+    // MVC
+
     app.listen(PORT, () => {
       console.log(`Example app listening on port ${PORT}`)
     })
@@ -33,4 +46,5 @@ async function startServer() {
     // throw new Error(error)
   }
 }
+
 startServer()

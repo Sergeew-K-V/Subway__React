@@ -10,6 +10,6 @@ const schemaOfFillings = new Schema({
   // Задать всем required: [true, 'Msg on error']?
 })
 
-module.exports = mongoose.model('schemaOfFillings', schemaOfFillings)
+module.exports = mongoose.model('Filling', schemaOfFillings)
 
 // https://developer.mozilla.org/ru/docs/Learn/Server-side/Express_Nodejs/mongoose
