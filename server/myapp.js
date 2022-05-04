@@ -2,30 +2,31 @@ const data = require('../data.json')
 const express = require('express')
 
 const mongoose = require('mongoose')
-const { CreateFilling } = require('./controllers/FillingsController')
-
 const mongoDb = 'mongodb://127.0.0.1:27017/'
-
+const { CreateFilling } = require('./controllers/FillingsController')
 const app = express()
 const PORT = 2323
 
+const fillingsRouter = require('./router/fillingsRoute')
+
 async function startServer() {
   try {
-    await mongoose.connect(mongoDb)
     // await mongoose.connect(mongoDb, {
     //   useNewUrlParser: true,
     //   useFindAndModify: false,
     // })
-    let db = mongoose.connection
-    db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+    // await mongoose.connect(mongoDb)
+    // let db = mongoose.connection
+    // db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
     app.get('/', (req, res) => {
       res.send('Hello World!')
     })
     app.get('/data', (req, res) => {
       res.send(data)
     })
-
-    app.post('/fillings', CreateFilling)
+    app.use(fillingsRouter)
+    // app.post('/fillings', CreateFilling)
     // restful
 
     /**
