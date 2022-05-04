@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../css/app.css'
+import Main from './Main/Main'
 import ModalFillings from './Modals/ModalFillings'
 import Navbar from './Navbar/Navbar'
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
             <Navbar modalControls={setModalActive}></Navbar>
+            <Main></Main>
           </div>
         </div>
       </main>
