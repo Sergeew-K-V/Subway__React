@@ -91,7 +91,15 @@ function ModalCustom() {
                   <img src={chevronRight} class='fa-solid fa-angle-right'></img>
                 </button>
               </div> */}
-              <div class='modal__content' id='content-card-root'></div>
+              <div class='modal__content' id='content-card-root'>
+                {/* ModalCustomCard */}
+                {/* ${this.currentArrayOfData !== undefined ? this.currentArrayOfData : ''} */}
+                <div class='modal__footer' id='modal-total-bottom-root'>
+                  <div class='modal__total-price'>
+                    <span>Итого: ${this.dataModal.price} руб.</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
