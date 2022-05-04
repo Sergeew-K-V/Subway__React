@@ -11,4 +11,4 @@ const schemaOfFillings = new Schema({
 })
 // https://developer.mozilla.org/ru/docs/Learn/Server-side/Express_Nodejs/mongoose
 
-module.exports('schemaOfFillings', schemaOfFillings)
+module.exports = mongoose.model('schemaOfFillings', schemaOfFillings)
