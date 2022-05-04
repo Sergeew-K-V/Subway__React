@@ -9,7 +9,6 @@ function Basket() {
           <div className='basket__icon'>
             <span className='icon-shadow'></span>
             <img className='basket__bas-icon-svg' src={basket} alt='basket' />
-
             {/* <i className='fa-solid fa-basket-shopping'></i> */}
           </div>
           <div className='basket__title'>
