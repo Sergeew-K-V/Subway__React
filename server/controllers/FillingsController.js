@@ -6,3 +6,7 @@ const CreateFilling = (req, res, next) => {
   // return res.send(filling)
 }
 const DeleteFilling = (req, res) => {}
+const GetAllFilling = (req, res) => {
+  res.json({ name: 'Responce', value: 155 })
+}
+module.exports = { GetAllFilling, DeleteFilling, CreateFilling }
