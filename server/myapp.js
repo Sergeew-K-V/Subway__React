@@ -11,10 +11,6 @@ const fillingsRouter = require('./routers/fillingsRoute')
 
 async function startServer() {
   try {
-    // await mongoose.connect(mongoDb, {
-    //   useNewUrlParser: true,
-    //   useFindAndModify: false,
-    // })
     await mongoose.connect(mongoDb)
     let db = mongoose.connection
     db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -29,7 +25,6 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
 
     app.use(fillingsRouter)
-    // restful
 
     /**
      * GET /fillings
@@ -38,8 +33,6 @@ async function startServer() {
      * PATCH /fillings/:id
      * DELETE /fillings/:id
      */
-
-    // MVC
 
     app.listen(PORT, () => {
       console.log(`Example app listening on port ${PORT}`)
