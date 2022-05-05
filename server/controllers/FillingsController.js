@@ -4,6 +4,7 @@ const CreateFillingCheck = [
   check('name', 'Error on validation name').isString(),
   check('price', 'Error on validation price').isNumeric(),
 ]
+
 const CreateFilling = async (req, res, next) => {
   try {
     const errors = validationResult(req)
@@ -26,17 +27,9 @@ const CreateFilling = async (req, res, next) => {
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }
-
-  // res.json({})- my
-  // Filling. - my
-  // req.body
-  // validation, try-catch
-  // const filling = await Filling.create(req.body)
-  // return res.send(filling)
 }
 const DeleteFilling = (req, res) => {}
 const GetAllFilling = async (req, res) => {
-  console.log('AA')
   const fillings = await Filling.find()
   return res.json({ name: 'Responce', value: 155, fillings })
 }

@@ -11,7 +11,6 @@ const schemaOfFillings = new Schema({
     enum: ['Size', 'Bread', 'Vegetables', 'Sauce', 'Fillings'],
     required: [true, 'Error with type of fillings in schema create'],
   },
-  // Задать всем required: [true, 'Msg on error']?
 })
 
 module.exports = mongoose.model('Filling', schemaOfFillings)

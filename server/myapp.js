@@ -29,8 +29,6 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
 
     app.use(fillingsRouter)
-    // app.post('/fillings', CreateFilling)
-    // app.get('/fillings')
     // restful
 
     /**
@@ -48,7 +46,6 @@ async function startServer() {
     })
   } catch (error) {
     console.log('error', error)
-    // throw new Error(error)
   }
 }
 
