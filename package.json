@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serverDev": "nodemon server/myapp.js",
-    "serverStart": "node server/myapp.js"
+    "serverStart": "node server/myapp.js",
+    "fullStart": "concurrently \"npm run serverDev\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +46,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^7.1.0",
     "nodemon": "^2.0.16"
   }
 }
