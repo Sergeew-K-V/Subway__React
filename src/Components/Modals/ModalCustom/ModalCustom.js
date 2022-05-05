@@ -4,21 +4,21 @@ import chevronRight from '../../../img/layout/chevron-right-solid.svg'
 
 function ModalCustom() {
   return (
-    <div class='modal-overlay' id='modal-overlay'>
-      <div class='modal'>
-        <div class='container-modal'>
-          <div class='modal__block' id='modal-block'>
-            <div class='modal__header'>
+    <div className='modal-overlay' id='modal-overlay'>
+      <div className='modal'>
+        <div className='container-modal'>
+          <div className='modal__block' id='modal-block'>
+            <div className='modal__header'>
               <span>Выберите размер сендвича</span>
-              <div class='modal__close'>
+              <div className='modal__close'>
                 <span></span>
               </div>
             </div>
-            <div class='modal__body' id='place-for-modal-content'>
-              <div class='body__navbar'>
-                {/* <ul class='body__navbar-section'>
+            <div className='modal__body' id='place-for-modal-content'>
+              <div className='body__navbar'>
+                {/* <ul className='body__navbar-section'>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 0 ? 'selected' : ''
                     }"
                     id='navbar-item-0'
@@ -26,7 +26,7 @@ function ModalCustom() {
                     Размер
                   </li>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 1 ? 'selected' : ''
                     }"
                     id='navbar-item-1'
@@ -34,7 +34,7 @@ function ModalCustom() {
                     Хлеб
                   </li>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 2 ? 'selected' : ''
                     }"
                     id='navbar-item-2'
@@ -42,7 +42,7 @@ function ModalCustom() {
                     Овощи
                   </li>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 3 ? 'selected' : ''
                     }"
                     id='navbar-item-3'
@@ -50,7 +50,7 @@ function ModalCustom() {
                     Соусы
                   </li>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 4 ? 'selected' : ''
                     }"
                     id='navbar-item-4'
@@ -58,7 +58,7 @@ function ModalCustom() {
                     Начинка
                   </li>
                   <li
-                    class="navbar__item ${
+                    className="navbar__item ${
                       this.dataModal.currentPage === 5 ? 'selected' : ''
                     }"
                     id='navbar-item-5'
@@ -68,34 +68,34 @@ function ModalCustom() {
                 </ul> */}
               </div>
               {/* <div
-                class="modal__btn-list ${this.dataModal.currentPage === 0 ? 'hiddenBack' : ''} ${
+                className="modal__btn-list ${this.dataModal.currentPage === 0 ? 'hiddenBack' : ''} ${
           this.dataModal.currentPage === 5 ? 'hiddenNext' : ''
         }"
               >
                 <button
-                  class="modal__btn ${
+                  className="modal__btn ${
                     this.dataModal.currentPage === 0 ? 'hidden' : ''
                   }"
                   id='btn-back'
                 >
-                  <img src={chevronLeft} class='fa-solid fa-chevron-left'></img>
+                  <img src={chevronLeft} className='fa-solid fa-chevron-left'></img>
                   <span>Назад</span>
                 </button>
                 <button
-                  class="modal__btn ${
+                  className="modal__btn ${
                     this.dataModal.currentPage === 5 ? 'hidden' : ''
                   }"
                   id='btn-next'
                 >
                   <span>Вперед</span>
-                  <img src={chevronRight} class='fa-solid fa-angle-right'></img>
+                  <img src={chevronRight} className='fa-solid fa-angle-right'></img>
                 </button>
               </div> */}
-              <div class='modal__content' id='content-card-root'>
+              <div className='modal__content' id='content-card-root'>
                 {/* ModalCustomCard */}
                 {/* ${this.currentArrayOfData !== undefined ? this.currentArrayOfData : ''} */}
-                <div class='modal__footer' id='modal-total-bottom-root'>
-                  <div class='modal__total-price'>
+                <div className='modal__footer' id='modal-total-bottom-root'>
+                  <div className='modal__total-price'>
                     <span>Итого: ${this.dataModal.price} руб.</span>
                   </div>
                 </div>
