@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Fillings({ modalControls }) {
+function Fillings({ setModalFillingsActive }) {
   return (
     <div
       className='navbar__btn-custom'
       onClick={() => {
-        modalControls(true)
+        setModalFillingsActive(true)
       }}
     >
       <button id='btn-fillings'>

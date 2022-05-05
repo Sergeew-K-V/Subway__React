@@ -25,6 +25,8 @@ async function startServer() {
     app.get('/data', (req, res) => {
       res.send(data)
     })
+    app.use(express.json)
+    app.use(express.urlencoded({ extended: false }))
     app.use(fillingsRouter)
     // app.post('/fillings', CreateFilling)
     // restful

@@ -5,7 +5,7 @@ import Custom from './Buttons/Custom'
 import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
 
-function Navbar({ modalControls }) {
+function Navbar({ setModalFillingsActive }) {
   return (
     <div className='navbar__block'>
       <div className='navbar__top'>
@@ -14,7 +14,7 @@ function Navbar({ modalControls }) {
         </div>
       </div>
       <div className='navbar__middle'>
-        <Fillings modalControls={modalControls}></Fillings>
+        <Fillings setModalFillingsActive={setModalFillingsActive}></Fillings>
         <ProductBtn></ProductBtn>
         <Custom></Custom>
       </div>

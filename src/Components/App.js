@@ -7,7 +7,9 @@ function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   return (
     <div className='app'>
-      {modalFillingsActive && <ModalFillings setActive={setModalFillingsActive}></ModalFillings>}
+      {modalFillingsActive && (
+        <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
+      )}
       <header className='header'>
         <div className='container-middle'>
           <div className='header__block'>
@@ -20,7 +22,7 @@ function App() {
       <main className='main'>
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
-            <Navbar modalControls={setModalFillingsActive}></Navbar>
+            <Navbar setModalFillingsActive={setModalFillingsActive}></Navbar>
             <Main></Main>
           </div>
         </div>
