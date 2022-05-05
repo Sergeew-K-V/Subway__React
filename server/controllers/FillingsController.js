@@ -22,7 +22,7 @@ const CreateFilling = async (req, res, next) => {
     const filling = new Filling({ name, price, type })
 
     await filling.save()
-    res.status(201).json({ message: 'The filling was created succesfully' })
+    res.status(201).json({ message: 'The filling was created succesfully', filling })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }

@@ -29,7 +29,7 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
     app.use(fillingsRouter)
     // app.post('/fillings', CreateFilling)
-
+    // app.get('/fillings')
     // restful
 
     /**
