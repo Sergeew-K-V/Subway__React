@@ -7,7 +7,7 @@ const { CreateFilling } = require('./controllers/FillingsController')
 const app = express()
 const PORT = 2323
 
-const fillingsRouter = require('./router/fillingsRoute')
+const fillingsRouter = require('./routers/fillingsRoute')
 
 async function startServer() {
   try {
@@ -29,6 +29,7 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
     app.use(fillingsRouter)
     // app.post('/fillings', CreateFilling)
+
     // restful
 
     /**
