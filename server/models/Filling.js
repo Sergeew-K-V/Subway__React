@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const schemaOfFillings = new Schema({
   name: { type: String, required: [true, 'Error with name in schema create'] },
-  price: { type: Number, required: [true, 'Error with price in schema create'], max: 100 },
+  price: { type: Number, required: [true, 'Error with price in schema create'], max: 100, min: 0 },
   image: { type: String, required: [true, 'Error with image in schema create'] },
   fillingsType: {
     type: String,

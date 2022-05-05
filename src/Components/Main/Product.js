@@ -4,7 +4,7 @@ import plus from '../img/layout/plus-solid.svg'
 
 function Product() {
   return (
-    <div className='subway__flex' id='content-${this.id}'>
+    <div className='subway__flex'>
       <div className='flex__top'>
         <div className='subway__logo'>{/* <img src={LOGO} alt='' /> */}</div>
         <div className='subway__img-logo'>{/* <img src={image} alt='' /> */}</div>

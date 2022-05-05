@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../css/app.css'
 import Main from './Main/Main'
-import { Route, Router, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import ModalFillings from './Modals/ModalFillings'
 import Navbar from './Navbar/Navbar'
 function App() {

@@ -1,7 +1,13 @@
-import react from 'react'
+import react, { useState } from 'react'
 import '../../css/modal-fillings.css'
 
 function ModalFillings({ setModalFillingsActive }) {
+  const [form, setForm] = useState({ name: '', price: 0, type: '' })
+
+  const changeHandler = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value })
+  }
+
   return (
     <div className='modal-fillings'>
       <form
@@ -20,11 +26,21 @@ function ModalFillings({ setModalFillingsActive }) {
             <span></span>
           </div>
           <p className='modal-fillings__item'>Название</p>
-          <input type='text' className='modal-fillings__input modal-fillings__item' />
+          <input
+            type='text'
+            placeholder='Введите название'
+            className='modal-fillings__input modal-fillings__item'
+            name='name'
+          />
           <p className='modal-fillings__item'>Цена</p>
-          <input type='number' className='modal-fillings__input modal-fillings__item' />
+          <input
+            type='number'
+            placeholder='Введите цену'
+            className='modal-fillings__input modal-fillings__item'
+            name='price'
+          />
           <p className='modal-fillings__item'>Тип начинки</p>
-          <select className='modal-fillings__item modal-fillings__select'>
+          <select className='modal-fillings__item modal-fillings__select' name='type'>
             <option value='sizes' key='sizes'>
               Размер
             </option>
