@@ -35,8 +35,10 @@ const CreateFilling = async (req, res, next) => {
   // return res.send(filling)
 }
 const DeleteFilling = (req, res) => {}
-const GetAllFilling = (req, res) => {
-  res.json({ name: 'Responce', value: 155 })
+const GetAllFilling = async (req, res) => {
+  console.log('AA')
+  const fillings = await Filling.find()
+  return res.json({ name: 'Responce', value: 155, fillings })
 }
 module.exports = { GetAllFilling, DeleteFilling, CreateFilling, CreateFillingCheck }
 //https://www.youtube.com/watch?v=ivDjWYcKDZI&t=1s

@@ -15,9 +15,9 @@ async function startServer() {
     //   useNewUrlParser: true,
     //   useFindAndModify: false,
     // })
-    // await mongoose.connect(mongoDb)
-    // let db = mongoose.connection
-    // db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+    await mongoose.connect(mongoDb)
+    let db = mongoose.connection
+    db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
     app.get('/', (req, res) => {
       res.send('Hello World!')
@@ -25,8 +25,9 @@ async function startServer() {
     app.get('/data', (req, res) => {
       res.send(data)
     })
-    app.use(express.json)
+    app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
+
     app.use(fillingsRouter)
     // app.post('/fillings', CreateFilling)
     // app.get('/fillings')
