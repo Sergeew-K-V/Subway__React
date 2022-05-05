@@ -1,13 +1,25 @@
 import react, { useState } from 'react'
 import '../../css/modal-fillings.css'
+import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
   const [form, setForm] = useState({ name: '', price: 0, type: '' })
+  const { request, error } = useHttp()
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value })
   }
+  // const getterHandler = async () => {
+  //   try {
+  //     const data = request('/fillings',undefined,undefined)
+  //   } catch (e) {}
+  // }
 
+  const postHandler = async () => {
+    try {
+      const data = request('/fillings', 'POST', { ...form })
+    } catch (e) {}
+  }
   return (
     <div className='modal-fillings'>
       <form
@@ -31,6 +43,7 @@ function ModalFillings({ setModalFillingsActive }) {
             placeholder='Введите название'
             className='modal-fillings__input modal-fillings__item'
             name='name'
+            onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Цена</p>
           <input
@@ -38,9 +51,14 @@ function ModalFillings({ setModalFillingsActive }) {
             placeholder='Введите цену'
             className='modal-fillings__input modal-fillings__item'
             name='price'
+            onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Тип начинки</p>
-          <select className='modal-fillings__item modal-fillings__select' name='type'>
+          <select
+            className='modal-fillings__item modal-fillings__select'
+            name='type'
+            onChange={changeHandler}
+          >
             <option value='sizes' key='sizes'>
               Размер
             </option>
@@ -57,7 +75,12 @@ function ModalFillings({ setModalFillingsActive }) {
               Начинка
             </option>
           </select>
-          <button className='modal-fillings__btn modal-fillings__item modal__btn'>Добавить</button>
+          <button
+            className='modal-fillings__btn modal-fillings__item modal__btn'
+            onClick={postHandler}
+          >
+            Добавить
+          </button>
         </div>
       </form>
     </div>
