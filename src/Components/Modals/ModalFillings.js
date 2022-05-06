@@ -3,11 +3,15 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
-  const [form, setForm] = useState({ name: '', price: 0, type: '' })
+  const [form, setForm] = useState({ name: '15 см', price: 0, type: 'sizes' })
   const { request, error } = useHttp()
 
   const changeHandler = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value })
+    if (event.target.name === 'price') {
+      setForm({ ...form, [event.target.name]: Number(event.target.value) })
+    } else {
+      setForm({ ...form, [event.target.name]: event.target.value })
+    }
   }
   // const getterHandler = async () => {
   //   try {

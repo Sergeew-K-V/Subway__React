@@ -15,6 +15,7 @@ const CreateFilling = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
+    debugger
     const { name, price, type } = req.body
     const existFilling = await Filling.findOne({ name })
 
@@ -22,8 +23,8 @@ const CreateFilling = async (req, res, next) => {
       return res.status(400).json({ message: 'This filling already exist' })
     }
     const filling = new Filling({ name, price, type })
-
     await filling.save()
+
     res.status(201).json({ message: 'The filling was created succesfully', filling })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })

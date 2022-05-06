@@ -3,7 +3,6 @@ const express = require('express')
 
 const mongoose = require('mongoose')
 const mongoDb = 'mongodb://127.0.0.1:27017/'
-const { CreateFilling } = require('./controllers/FillingsController')
 const app = express()
 const PORT = 2323
 
