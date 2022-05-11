@@ -3,7 +3,7 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
-  const [form, setForm] = useState({ name: '15 см', price: 0, type: 'sizes' })
+  const [form, setForm] = useState({ name: '15 см', price: 0, fillingsType: 'Size' })
   const { request, error } = useHttp()
 
   const changeHandler = (event) => {
@@ -60,22 +60,22 @@ function ModalFillings({ setModalFillingsActive }) {
           <p className='modal-fillings__item'>Тип начинки</p>
           <select
             className='modal-fillings__item modal-fillings__select'
-            name='type'
+            name='fillingsType'
             onChange={changeHandler}
           >
-            <option value='sizes' key='sizes'>
+            <option value='Size' key='sizes'>
               Размер
             </option>
-            <option value='breads' key='breads'>
+            <option value='Bread' key='breads'>
               Хлеб
             </option>
-            <option value='vegentables' key='vegentables'>
+            <option value='Vegetables' key='vegentables'>
               Овощи
             </option>
-            <option value='sauces' key='sauces'>
+            <option value='Sauce' key='sauces'>
               Соус
             </option>
-            <option value='fillings' key='fillings'>
+            <option value='Fillings' key='fillings'>
               Начинка
             </option>
           </select>

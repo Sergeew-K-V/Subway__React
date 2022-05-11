@@ -20,7 +20,7 @@ async function startServer() {
     app.get('/data', (req, res) => {
       res.send(data)
     })
-    app.use(express.json())
+    app.use(express.json({ extended: true }))
     app.use(express.urlencoded({ extended: false }))
 
     app.use(fillingsRouter)
