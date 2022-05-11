@@ -2,7 +2,7 @@ const data = require('../data.json')
 const express = require('express')
 
 const mongoose = require('mongoose')
-const mongoDb = 'mongodb://127.0.0.1:27017/'
+const mongoDb = 'mongodb://127.0.0.1:27017/SubwayShop'
 const app = express()
 const PORT = 2323
 
