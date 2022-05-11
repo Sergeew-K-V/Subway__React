@@ -1,10 +1,10 @@
-import react, { useState } from 'react'
+import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
-  const [form, setForm] = useState({ name: '15 см', price: 0, fillingsType: 'Size' })
-  const { request, error } = useHttp()
+  const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
+  const { request } = useHttp()
 
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
@@ -22,6 +22,9 @@ function ModalFillings({ setModalFillingsActive }) {
   const postHandler = async () => {
     try {
       const data = request('/fillings', 'POST', { ...form })
+      data.then((value) => {
+        alert(value.message)
+      })
     } catch (e) {}
   }
   return (

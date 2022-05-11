@@ -17,16 +17,16 @@ const CreateFilling = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    debugger
-    const { name, price, type } = req.body
+    const { name, price, fillingsType } = req.body
+
     const existFilling = await Filling.findOne({ name })
 
     if (existFilling) {
       return res.status(400).json({ message: 'This filling already exist' })
     }
-    const filling = new Filling({ name, price, type })
-    await filling.save()
-    // const filling = await Filling.create(req.body)
+    // const filling = new Filling({ name, price, type })
+    // await filling.save()
+    const filling = await Filling.create(req.body)
 
     res.status(201).json({ message: 'The filling was created succesfully', filling })
   } catch (error) {
@@ -36,7 +36,7 @@ const CreateFilling = async (req, res, next) => {
 const DeleteFilling = (req, res) => {}
 const GetAllFilling = async (req, res) => {
   const fillings = await Filling.find()
-  return res.json({ name: 'Responce', value: 155, fillings })
+  return res.json({ fillings })
 }
 module.exports = { GetAllFilling, DeleteFilling, CreateFilling, CreateFillingCheck }
 //https://www.youtube.com/watch?v=ivDjWYcKDZI&t=1s
