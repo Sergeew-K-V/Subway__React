@@ -6,12 +6,18 @@ function ModalFillings({ setModalFillingsActive }) {
   const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
   const { request } = useHttp()
 
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState(0)
+
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
       setForm({ ...form, [event.target.name]: Number(event.target.value) })
     } else {
       setForm({ ...form, [event.target.name]: event.target.value })
     }
+  }
+  const clearForm = () => {
+    setForm((form.name = null), (form.price = null))
   }
   // const getterHandler = async () => {
   //   try {
@@ -24,6 +30,7 @@ function ModalFillings({ setModalFillingsActive }) {
       const data = request('/fillings', 'POST', { ...form })
       data.then((value) => {
         alert(value.message)
+        clearForm()
       })
     } catch (e) {}
   }

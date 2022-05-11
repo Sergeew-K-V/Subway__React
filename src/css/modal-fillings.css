@@ -98,6 +98,7 @@
 }
 
 .modal-fillings__input {
+  padding: 5px 10px;
   font-size: 20px;
   border-radius: 4px;
   width: 60%;
