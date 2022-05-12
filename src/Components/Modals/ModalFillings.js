@@ -4,7 +4,7 @@ import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
   const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
-  const { request } = useHttp()
+  const { request, error } = useHttp()
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
@@ -31,6 +31,7 @@ function ModalFillings({ setModalFillingsActive }) {
       data.then((value) => {
         alert(value.message)
         clearForm()
+        setModalFillingsActive(false)
       })
     } catch (e) {}
   }
@@ -91,7 +92,9 @@ function ModalFillings({ setModalFillingsActive }) {
           </select>
           <button
             className='modal-fillings__btn modal-fillings__item modal__btn'
-            onClick={postHandler}
+            onClick={() => {
+              postHandler()
+            }}
           >
             Добавить
           </button>
