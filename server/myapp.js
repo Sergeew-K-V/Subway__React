@@ -1,11 +1,13 @@
 const data = require('../data.json')
 const express = require('express')
+const path = require('path')
 
 const mongoose = require('mongoose')
 const mongoDb = 'mongodb://127.0.0.1:27017/SubwayShop'
 const app = express()
 const PORT = 2323
-const path = '/Users/darya/Desktop/Kirill/Subway__React/src/img/icons'
+const imagePath = '/Users/darya/Desktop/Kirill/Subway__React/src/img/icons'
+
 const fillingsRouter = require('./routers/fillingsRoute')
 const productsRouter = require('./routers/productsRoute')
 
@@ -19,8 +21,8 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
     app.use(fillingsRouter)
     app.use(productsRouter)
-    app.use(express.static(path))
-    /**
+    app.use('/static', express.static('server/img'))
+    /*
      * GET /fillings
      * GET /fillings/:id
      * POST /fillings

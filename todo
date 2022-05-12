@@ -7,3 +7,5 @@ redux -> initState
 redux - action, for fetch products and set to state
 
 useSelector
+
+нужно стилизовать инпут

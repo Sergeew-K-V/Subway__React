@@ -7,5 +7,5 @@ const {
 } = require('../controllers/ProductsController')
 
 router.post('/products', CreateProductCheck, CreateProduct)
-router.get('/', GetAllProduct)
+router.get('/products', GetAllProduct)
 module.exports = router
