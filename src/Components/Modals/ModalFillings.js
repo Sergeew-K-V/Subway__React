@@ -3,7 +3,12 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
-  const [form, setForm] = useState({ name: null, price: null, image: null, fillingsType: 'Size' })
+  const [form, setForm] = useState({
+    name: null,
+    price: null,
+    // image: null,
+    fillingsType: 'Size',
+  })
   const { request } = useHttp()
 
   // const [name, setName] = useState('')
@@ -17,7 +22,7 @@ function ModalFillings({ setModalFillingsActive }) {
     }
   }
   const clearForm = () => {
-    setForm((form.name = null), (form.price = null))
+    setForm((form.name = null), (form.price = null), (form.fillingsType = 'Size'))
   }
   // const getterHandler = async () => {
   //   try {

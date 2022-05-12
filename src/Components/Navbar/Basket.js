@@ -1,5 +1,5 @@
 import React from 'react'
-import basket from '../../img/layout/basket-shopping-solid.svg'
+import basket from '../../img/basket-shopping-solid.svg'
 
 function Basket() {
   return (

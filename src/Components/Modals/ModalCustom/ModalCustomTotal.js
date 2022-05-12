@@ -1,6 +1,6 @@
 import React from 'react'
-import plus from '../../../img/layout/plus-solid.svg'
-import minus from '../../../img/layout/minus-solid.svg'
+import plus from '../../../img/plus-solid.svg'
+import minus from '../../../img/minus-solid.svg'
 
 function ModalCustomTotal() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import chevronLeft from '../../../img/layout/chevron-left-solid.svg'
-import chevronRight from '../../../img/layout/chevron-right-solid.svg'
+import chevronLeft from '../../../img/chevron-left-solid.svg'
+import chevronRight from '../../../img/chevron-right-solid.svg'
 
 function ModalCustom() {
   return (

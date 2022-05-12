@@ -23,7 +23,12 @@ function ModalFillings({ setModalProductsActive }) {
     }
   }
   const clearForm = () => {
-    setForm((form.name = null), (form.price = null))
+    setForm(
+      (form.name = null),
+      (form.price = null),
+      (form.description = null),
+      (form.productsType = 'Pizza')
+    )
   }
   // const getterHandler = async () => {
   //   try {

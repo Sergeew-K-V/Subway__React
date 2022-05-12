@@ -988,7 +988,7 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-  background-image: url("../img/layout/background-subway-shop.jpg");
+  background-image: url("../img/background-subway-shop.jpg");
   font-size: 18px;
   min-height: 100%;
   font-family: 'Inter', sans-serif;

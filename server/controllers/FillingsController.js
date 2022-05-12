@@ -5,7 +5,7 @@ const { default: mongoose } = require('mongoose')
 const CreateFillingCheck = [
   check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
-  check('image', 'Error on validation image').isString(),
+  // check('image', 'Error on validation image').isString(),
   check('fillingsType', 'Error on validation fillingsType').isString().trim(),
 ]
 
