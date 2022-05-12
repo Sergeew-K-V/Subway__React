@@ -34,7 +34,7 @@ const CreateProduct = async (req, res, next) => {
     const existProduct = await Product.findOne({ name })
 
     if (existProduct) {
-      return res.status(400).json({ message: 'This product already exist' })
+      return res.status(400).json({ message: `Product ${name} already exist` })
     }
     const product = await Product.create(req.body)
 

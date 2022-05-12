@@ -27,7 +27,7 @@ function ModalFillings({ setModalProductsActive }) {
   }
   // const getterHandler = async () => {
   //   try {
-  //     const data = request('/fillings',undefined,undefined)
+  //     const data = request('/products',undefined,undefined)
   //   } catch (e) {}
   // }
 

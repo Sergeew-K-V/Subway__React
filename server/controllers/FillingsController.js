@@ -23,7 +23,7 @@ const CreateFilling = async (req, res, next) => {
     const existFilling = await Filling.findOne({ name })
 
     if (existFilling) {
-      return res.status(400).json({ message: 'This filling already exist' })
+      return res.status(400).json({ message: `Filling ${name} already exist` })
     }
     // const filling = new Filling({ name, price, type })
     // await filling.save()
