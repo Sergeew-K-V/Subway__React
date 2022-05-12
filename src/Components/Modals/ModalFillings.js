@@ -4,7 +4,7 @@ import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
   const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
-  const { request, error } = useHttp()
+  const { request } = useHttp()
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
