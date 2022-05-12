@@ -1,9 +1,0 @@
-multer || express-fileupload
-express - static
-store image path to DB
-
-selectedCategory - in state (+ useEffect)
-redux -> initState
-redux - action, for fetch products and set to state
-
-useSelector

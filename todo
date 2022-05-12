@@ -1,10 +1,9 @@
-type: {
-  type: enum  
-}
+multer || express-fileupload
+express - static
+store image path to DB
 
-форма модалка или стр для добавления начинки и (потом форма для продукта)
-)
-для начинки добавить дроп даун - селект с типом начинки 
+selectedCategory - in state (+ useEffect)
+redux -> initState
+redux - action, for fetch products and set to state
 
-мондус и енум
-
+useSelector
