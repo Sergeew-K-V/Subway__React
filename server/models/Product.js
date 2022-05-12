@@ -10,7 +10,7 @@ const schemaOfProducts = new Schema({
   image: { type: String, required: [true, 'Error with image in schema create'] },
   productsType: {
     type: String,
-    enum: ['Subway', 'Pizza', 'Burger', 'Shaurma', 'Chiken', 'Salads', 'Drinks'],
+    enum: ['Sandwich', 'Pizza', 'Burger', 'Shaurma', 'Chiken', 'Salads', 'Drinks'],
     required: [true, 'Error with type of fillings in schema create'],
   },
 })
