@@ -3,11 +3,11 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalFillingsActive }) {
-  const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
+  const [form, setForm] = useState({ name: null, price: null, image: null, fillingsType: 'Size' })
   const { request } = useHttp()
 
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState(0)
+  // const [name, setName] = useState('')
+  // const [price, setPrice] = useState(0)
 
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
@@ -90,6 +90,14 @@ function ModalFillings({ setModalFillingsActive }) {
               Начинка
             </option>
           </select>
+          <p className='modal-fillings__item'>Картинка</p>
+          <input
+            type='file'
+            placeholder='Добавте картинку'
+            className='modal-fillings__input modal-fillings__item'
+            name='image'
+            onChange={changeHandler}
+          />
           <button
             className='modal-fillings__btn modal-fillings__item modal__btn'
             onClick={() => {

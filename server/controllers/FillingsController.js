@@ -5,7 +5,7 @@ const { default: mongoose } = require('mongoose')
 const CreateFillingCheck = [
   check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
-  // check('image', 'Error on validation image').isString(),
+  check('image', 'Error on validation image').isString(),
   check('fillingsType', 'Error on validation fillingsType').isString().trim(),
 ]
 
@@ -18,7 +18,7 @@ const CreateFilling = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    const { name, price, fillingsType } = req.body
+    const { name, price, image, fillingsType } = req.body
 
     const existFilling = await Filling.findOne({ name })
 

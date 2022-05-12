@@ -111,6 +111,14 @@ function ModalFillings({ setModalProductsActive }) {
               Курица
             </option>
           </select>
+          <p className='modal-fillings__item'>Картинка</p>
+          <input
+            type='file'
+            placeholder='Добавте картинку'
+            className='modal-fillings__input modal-fillings__item'
+            name='image'
+            onChange={changeHandler}
+          />
           <button
             className='modal-fillings__btn modal-fillings__item modal__btn'
             onClick={() => {
