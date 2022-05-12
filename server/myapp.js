@@ -14,12 +14,6 @@ async function startServer() {
     let db = mongoose.connection
     db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-    app.get('/', (req, res) => {
-      res.send('Hello World!')
-    })
-    app.get('/data', (req, res) => {
-      res.send(data)
-    })
     app.use(express.json({ extended: true }))
     app.use(express.urlencoded({ extended: false }))
 
@@ -36,9 +30,7 @@ async function startServer() {
     app.listen(PORT, () => {
       console.log(`Example app listening on port ${PORT}`)
     })
-  } catch (error) {
-    console.log('error', error)
-  }
+  } catch (error) {}
 }
 
 startServer()

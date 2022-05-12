@@ -21,7 +21,6 @@ export const useHttp = () => {
         throw new Error(data.message || 'Something was going wrong')
       }
       setLoading(false)
-
       return data
     } catch (e) {
       setLoading(false)

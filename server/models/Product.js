@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Schema = new mongoose.Schema()
+const Schema = mongoose.Schema
 
 const schemaOfProducts = new Schema({
   name: { type: String, required: [true, 'Error with name in schema create'] },
