@@ -3,7 +3,13 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalFillings({ setModalProductsActive }) {
-  const [form, setForm] = useState({ name: null, price: null, fillingsType: 'Size' })
+  const [form, setForm] = useState({
+    name: null,
+    price: null,
+    description: null,
+    quantity: 0,
+    productsType: 'Pizza',
+  })
   const { request } = useHttp()
 
   //   const [name, setName] = useState('')
@@ -28,6 +34,7 @@ function ModalFillings({ setModalProductsActive }) {
   const postHandler = async () => {
     try {
       const data = request('/products', 'POST', { ...form })
+      debugger
       data.then((value) => {
         alert(value.message)
         clearForm()
@@ -74,14 +81,6 @@ function ModalFillings({ setModalProductsActive }) {
             placeholder='Введите описание товара'
             className='modal-fillings__input modal-fillings__item'
             name='description'
-            onChange={changeHandler}
-          />
-          <p className='modal-fillings__item'>Количество</p>
-          <input
-            type='text'
-            placeholder='Введите описание товара'
-            className='modal-fillings__input modal-fillings__item'
-            name='quantity'
             onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Тип продукта</p>

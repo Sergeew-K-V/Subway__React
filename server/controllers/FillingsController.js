@@ -3,10 +3,10 @@ const Filling = require('../models/Filling')
 const { check, validationResult } = require('express-validator')
 const { default: mongoose } = require('mongoose')
 const CreateFillingCheck = [
-  check('name', 'Error on validation name').isString(),
+  check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
-  check('image', 'Error on validation image').isString(),
-  check('fillingsType', 'Error on validation fillingsType').isString(),
+  // check('image', 'Error on validation image').isString(),
+  check('fillingsType', 'Error on validation fillingsType').isString().trim(),
 ]
 
 const CreateFilling = async (req, res, next) => {
@@ -29,7 +29,7 @@ const CreateFilling = async (req, res, next) => {
     // await filling.save()
     const filling = await Filling.create(req.body)
 
-    res.status(201).json({ message: 'The filling was created succesfully', filling })
+    res.status(201).json({ message: `The filling ${name} was created succesfully`, filling })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }

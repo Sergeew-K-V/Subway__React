@@ -7,7 +7,7 @@ const app = express()
 const PORT = 2323
 
 const fillingsRouter = require('./routers/fillingsRoute')
-
+const productsRouter = require('./routers/productsRoute')
 async function startServer() {
   try {
     await mongoose.connect(mongoDb)
@@ -18,7 +18,7 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
 
     app.use(fillingsRouter)
-
+    app.use(productsRouter)
     /**
      * GET /fillings
      * GET /fillings/:id
