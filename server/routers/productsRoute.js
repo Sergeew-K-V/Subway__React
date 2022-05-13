@@ -9,16 +9,13 @@ const {
 const multer = require('multer')
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, './uploadImage')
+    cb(null, './static')
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '--' + file.originalname)
   },
 })
 const upload = multer({ storage: fileStorage })
-
-// const multer = require('multer')
-// const upload = multer({ dest: 'uploadImage/' })
 
 router.post('/products', upload.single('imageFile'), CreateProductCheck, CreateProduct)
 router.get('/products', GetAllProduct)
