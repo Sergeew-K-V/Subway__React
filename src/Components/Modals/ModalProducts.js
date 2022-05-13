@@ -5,11 +5,10 @@ import { useHttp } from '../../hooks/http.hook'
 function ModalProducts({ setModalProductsActive }) {
   const formData = new FormData()
   const [form, setForm] = useState({
-    name: null,
+    name: '',
     imageFile: {},
-    price: null,
-    description: null,
-    quantity: 0,
+    price: 0,
+    description: '',
     productsType: 'Pizza',
   })
   const { request } = useHttp()
@@ -34,15 +33,6 @@ function ModalProducts({ setModalProductsActive }) {
       (form.description = null),
       (form.productsType = 'Pizza')
     )
-  }
-  useEffect(() => {
-    getterHandler()
-  }, [])
-  const getterHandler = async () => {
-    try {
-      const data = request('/products', 'GET', undefined, undefined)
-      debugger
-    } catch (e) {}
   }
 
   function convertToFormData(obj) {
@@ -90,6 +80,7 @@ function ModalProducts({ setModalProductsActive }) {
             placeholder='Введите название'
             className='modal-fillings__input modal-fillings__item'
             name='name'
+            value={form.name}
             onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Цена</p>
@@ -98,6 +89,7 @@ function ModalProducts({ setModalProductsActive }) {
             placeholder='Введите цену'
             className='modal-fillings__input modal-fillings__item'
             name='price'
+            value={form.price}
             onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Описание</p>
@@ -106,12 +98,14 @@ function ModalProducts({ setModalProductsActive }) {
             placeholder='Введите описание товара'
             className='modal-fillings__input modal-fillings__item'
             name='description'
+            value={form.description}
             onChange={changeHandler}
           />
           <p className='modal-fillings__item'>Тип продукта</p>
           <select
             className='modal-fillings__item modal-fillings__select'
             name='productsType'
+            value={form.productsType}
             onChange={changeHandler}
           >
             <option value='Pizza' key='pizza'>
