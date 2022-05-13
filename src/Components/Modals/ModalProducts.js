@@ -35,11 +35,15 @@ function ModalProducts({ setModalProductsActive }) {
       (form.productsType = 'Pizza')
     )
   }
-  // const getterHandler = async () => {
-  //   try {
-  //     const data = request('/products',undefined,undefined)
-  //   } catch (e) {}
-  // }
+  useEffect(() => {
+    getterHandler()
+  }, [])
+  const getterHandler = async () => {
+    try {
+      const data = request('/products', 'GET', undefined, undefined)
+      debugger
+    } catch (e) {}
+  }
 
   function convertToFormData(obj) {
     for (const key in obj) {
