@@ -9,16 +9,20 @@ export const useHttp = () => {
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
     setLoading(true)
-    debugger
     try {
       if (body) {
         // body = JSON.stringify(body)
         // headers['Content-Type'] = 'application/json'
+        // headers['Content-Type'] = 'multipart/form-data'
       }
-      const responce = await fetch(url, { method, body, headers })
+      const responce = await fetch(url, {
+        method,
+        body,
+        headers,
+      })
       const data = await responce.json()
       if (!responce.ok) {
-        alert(data.message)
+        alert(data.message.error)
         throw new Error(data.message || 'Something was going wrong')
       }
       setLoading(false)

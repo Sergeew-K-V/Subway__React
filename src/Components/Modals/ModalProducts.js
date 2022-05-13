@@ -3,8 +3,6 @@ import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
 function ModalProducts({ setModalProductsActive }) {
-  //   const [name, setName] = useState('')
-  //   const [price, setPrice] = useState(0)
   const formData = new FormData()
   const [form, setForm] = useState({
     name: null,
@@ -16,11 +14,8 @@ function ModalProducts({ setModalProductsActive }) {
   })
   const { request } = useHttp()
 
-  function convertToFormData(obj) {
-    for (const key in obj) {
-      formData.set(key, obj[key])
-    }
-  }
+  //   const [name, setName] = useState('')
+  //   const [price, setPrice] = useState(0)
 
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
@@ -46,14 +41,20 @@ function ModalProducts({ setModalProductsActive }) {
   //     const data = request('/products',undefined,undefined)
   //   } catch (e) {}
   // }
+
+  function convertToFormData(obj) {
+    for (const key in obj) {
+      formData.set(key, obj[key])
+    }
+  }
+
   const postHandler = async () => {
     try {
       convertToFormData(form)
-      for (let [name, value] of formData) {
-        alert(`${name} = ${value}`) // key1=value1, потом key2=value2
-      }
+      // for (let [name, value] of formData) {
+      //   alert(`${name} = ${value}`) // key1=value1, потом key2=value2
+      // }
       // console.log(...formData)
-      debugger
       const data = request('/products', 'POST', formData)
       data.then((value) => {
         alert(value.message)
