@@ -35,6 +35,7 @@ function Product({ id, name, price, description, imageFile }) {
               className='btns-list__btn subway-input'
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
+              min={0}
             />
             <button className='btns-list__btn'>
               <img src={plus} className='fa-solid fa-plus'></img>

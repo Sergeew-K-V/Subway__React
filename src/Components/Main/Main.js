@@ -5,7 +5,9 @@ import Product from './Product'
 function Main() {
   const [mainData, setMainData] = useState([])
   const { request, loading } = useHttp()
+
   async function getterHandler() {
+    // URLSearchParams
     try {
       const data = await request('/products', 'GET', undefined, undefined)
 
@@ -25,9 +27,11 @@ function Main() {
       // })
     } catch (e) {}
   }
+
   useEffect(() => {
     getterHandler()
   }, [])
+
   return (
     <div className='main__content' id='root-subMain-right'>
       <div className='container-content'>
