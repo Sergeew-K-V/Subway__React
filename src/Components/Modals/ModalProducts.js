@@ -2,9 +2,13 @@ import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
-function ModalFillings({ setModalProductsActive }) {
+function ModalProducts({ setModalProductsActive }) {
+  //   const [name, setName] = useState('')
+  //   const [price, setPrice] = useState(0)
+  const formData = new FormData()
   const [form, setForm] = useState({
     name: null,
+    imageFile: {},
     price: null,
     description: null,
     quantity: 0,
@@ -12,12 +16,19 @@ function ModalFillings({ setModalProductsActive }) {
   })
   const { request } = useHttp()
 
-  //   const [name, setName] = useState('')
-  //   const [price, setPrice] = useState(0)
+  function convertToFormData(obj) {
+    for (const key in obj) {
+      formData.set(key, obj[key])
+    }
+  }
 
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
       setForm({ ...form, [event.target.name]: Number(event.target.value) })
+    }
+    if (event.target.files) {
+      // console.log(event.target.files[0], 'event.target.files')
+      setForm({ ...form, [event.target.name]: event.target.files[0] })
     } else {
       setForm({ ...form, [event.target.name]: event.target.value })
     }
@@ -35,11 +46,15 @@ function ModalFillings({ setModalProductsActive }) {
   //     const data = request('/products',undefined,undefined)
   //   } catch (e) {}
   // }
-
   const postHandler = async () => {
     try {
-      const data = request('/products', 'POST', { ...form })
+      convertToFormData(form)
+      for (let [name, value] of formData) {
+        alert(`${name} = ${value}`) // key1=value1, потом key2=value2
+      }
+      // console.log(...formData)
       debugger
+      const data = request('/products', 'POST', formData)
       data.then((value) => {
         alert(value.message)
         clearForm()
@@ -50,6 +65,7 @@ function ModalFillings({ setModalProductsActive }) {
   return (
     <div className='modal-fillings'>
       <form
+        encType='multipart/form-data'
         className='modal-fillings__form'
         onSubmit={(e) => {
           e.preventDefault()
@@ -121,7 +137,7 @@ function ModalFillings({ setModalProductsActive }) {
             type='file'
             placeholder='Добавте картинку'
             className='modal-fillings__input modal-fillings__item'
-            name='image'
+            name='imageFile'
             onChange={changeHandler}
           />
           <button
@@ -138,4 +154,4 @@ function ModalFillings({ setModalProductsActive }) {
   )
 }
 
-export default ModalFillings
+export default ModalProducts

@@ -7,7 +7,7 @@ const CreateProductCheck = [
   check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
   check('description', 'Error on validation description').isString().trim(),
-  // check('image', 'Error on validation image').isString(),
+  check('imageFile', 'Error on validation image').isObject(),
   check('productsType', 'Error on validation productsType').isString().trim(),
 ]
 const GetAllProduct = async (req, res) => {
@@ -16,6 +16,8 @@ const GetAllProduct = async (req, res) => {
 }
 const CreateProduct = async (req, res, next) => {
   try {
+    console.log('req.body', req.body)
+    console.log('req.file', req.file)
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       return res.status(400).json({
@@ -23,13 +25,7 @@ const CreateProduct = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    const {
-      name,
-      price,
-      description,
-      //  image,
-      productsType,
-    } = req.body
+    const { name, price, description, imageFile, productsType } = req.body
 
     const existProduct = await Product.findOne({ name })
 

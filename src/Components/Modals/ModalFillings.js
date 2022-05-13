@@ -43,6 +43,7 @@ function ModalFillings({ setModalFillingsActive }) {
   return (
     <div className='modal-fillings'>
       <form
+        encType='multipart/form-data'
         className='modal-fillings__form'
         onSubmit={(e) => {
           e.preventDefault()
