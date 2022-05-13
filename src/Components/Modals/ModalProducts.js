@@ -22,7 +22,6 @@ function ModalProducts({ setModalProductsActive }) {
       setForm({ ...form, [event.target.name]: Number(event.target.value) })
     }
     if (event.target.files) {
-      // console.log(event.target.files[0], 'event.target.files')
       setForm({ ...form, [event.target.name]: event.target.files[0] })
     } else {
       setForm({ ...form, [event.target.name]: event.target.value })
