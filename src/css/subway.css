@@ -119,15 +119,17 @@
 }
 
 .fa-plus {
-  padding: 10px;
-  color: grey;
-  cursor: pointer;
+  color: black;
+  width: 20px;
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
 }
 
 .fa-minus {
-  padding: 10px;
-  color: grey;
-  cursor: pointer;
+  color: black;
+  width: 20px;
+  -webkit-transform: translateY(15%);
+          transform: translateY(15%);
 }
 
 .btns-list__btn {
@@ -136,6 +138,9 @@
   border: 1px solid grey;
   font-size: 20px;
   background-color: white;
+  padding: 10px;
+  color: grey;
+  cursor: pointer;
 }
 
 .btns-list__btn:nth-child(2) {
@@ -144,6 +149,7 @@
   border-radius: 10px;
   font-weight: 600;
   font-size: 20px;
+  color: black;
 }
 
 input::-webkit-outer-spin-button,

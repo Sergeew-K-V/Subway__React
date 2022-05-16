@@ -4,6 +4,7 @@ import Menu from './Menu'
 import Custom from './Buttons/Custom'
 import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
+import '../../css/navbar.css'
 
 function Navbar({ setModalFillingsActive, setModalProductsActive }) {
   return (
