@@ -27,7 +27,7 @@ const CreateProduct = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    const { name, price, description, imageFile = req.file.path, productsType } = req.body
+    const { name, price, description, imageFile = req.file.path.slice(7), productsType } = req.body
 
     // req.file.filename = req.file.originalname
     // req.file.path = 'uploadImage/' + req.file.filename

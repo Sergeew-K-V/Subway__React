@@ -19,7 +19,7 @@ async function startServer() {
     app.use(express.urlencoded({ extended: false }))
     app.use(fillingsRouter)
     app.use(productsRouter)
-    app.use('/static', express.static('static'))
+    app.use('/static', express.static('server/static'))
     /*
      * GET /fillings
      * GET /fillings/:id

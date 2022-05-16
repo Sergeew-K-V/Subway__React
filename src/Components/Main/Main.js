@@ -9,7 +9,7 @@ function Main() {
   async function getterHandler() {
     // URLSearchParams
     try {
-      const data = await request('/products', 'GET', undefined, undefined)
+      const data = await request('/products', 'GET')
 
       if (data !== undefined && data !== null && !loading) {
         // for (const key in data.products) {
