@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../css/app.css'
 import Main from './Main/Main'
 import ModalFillings from './Modals/ModalFillings'
@@ -8,6 +8,7 @@ import Navbar from './Navbar/Navbar'
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   const [modalProductsActive, setModalProductsActive] = useState(false)
+
   return (
     <div className='app'>
       {modalFillingsActive && (
