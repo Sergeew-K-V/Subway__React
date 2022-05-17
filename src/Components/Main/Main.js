@@ -6,7 +6,8 @@ let counter = 1
 
 function Main() {
   const [mainData, setMainData] = useState([])
-  const { request, loading } = useHttp()
+  const { request } = useHttp()
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     console.log('render', counter)
     counter++
@@ -23,25 +24,20 @@ function Main() {
   }
 
   useEffect(() => {
+    setLoading(true)
     setTimeout(() => {
       getterHandler()
+      setLoading(false)
     }, 2000)
   }, [])
   return (
     <div className='main__content' id='root-subMain-right'>
       <div className='container-content'>
         <div className='main__flex'>
-          {/* {loading && <Loader></Loader>} */}
-          {mainData.length === 0 ? (
-            // <div>
-            //   <span>
-            //     <strong>
-            //       There are no products!<Loader></Loader>
-            //     </strong>
-            //   </span>
-            // </div>
+          {/* {console.log(mainData)} */}
+          {loading ? (
             <Loader></Loader>
-          ) : (
+          ) : mainData.length !== 0 ? (
             mainData.map((el) => (
               <Product
                 key={el._id}
@@ -52,19 +48,13 @@ function Main() {
                 imageFile={el.imageFile}
               ></Product>
             ))
+          ) : (
+            <div>
+              <span>
+                <strong>There are no products!</strong>
+              </span>
+            </div>
           )}
-          {/* {console.log('mainData', mainData)} */}
-          {/* {mainData.length !== 0 &&
-            mainData.map((el) => (
-              <Product
-                key={el._id}
-                id={el._id}
-                name={el.name}
-                price={el.price}
-                description={el.description}
-                imageFile={el.imageFile}
-              ></Product>
-            ))} */}
         </div>
       </div>
     </div>
