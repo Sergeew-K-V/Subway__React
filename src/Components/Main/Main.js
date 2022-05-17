@@ -4,11 +4,11 @@ import Product from './Product'
 import Loader from '../Loader'
 let counter = 1
 
-function Main() {
+function Main({ category }) {
   useEffect(() => {
     console.log('render', counter)
     counter++
-  }, [])
+  }, [category])
   const [mainData, setMainData] = useState([])
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)

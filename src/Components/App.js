@@ -38,7 +38,7 @@ function App() {
               setModalFillingsActive={setModalFillingsActive}
               setModalProductsActive={setModalProductsActive}
             ></Navbar>
-            <Main></Main>
+            <Main category={category}></Main>
           </div>
         </div>
       </main>
