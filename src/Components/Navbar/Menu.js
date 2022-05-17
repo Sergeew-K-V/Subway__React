@@ -1,15 +1,28 @@
 import React from 'react'
 
-function Menu() {
+function Menu({ category, setCategory }) {
+  const arrayOfCategory = [
+    { cat: 'sandwich', name: 'Сендвичи' },
+    { cat: 'pizza', name: 'Пицца' },
+    { cat: 'shaurma', name: 'Шаурма' },
+    { cat: 'burger', name: 'Бургеры' },
+    { cat: 'chicken', name: 'Курица & Картофель' },
+    { cat: 'salads', name: 'Тортилья & Салаты' },
+    { cat: 'drinks', name: 'Напитки & Десерты' },
+  ]
   return (
     <ul className='navbar__menu' id='menu__subRoot'>
-      <li className='menu__item'>Блины</li>
-      <li className='menu__item'>Шаурма</li>
-      <li className='menu__item'>Сендвичи</li>
-      <li className='menu__item'>Бургеры</li>
-      <li className='menu__item'>Курица и Картофель</li>
-      <li className='menu__item'>Тортилья и Салаты</li>
-      <li className='menu__item'>Напитки и Десерты</li>
+      {arrayOfCategory.map((el) => {
+        return (
+          <li
+            key={el.cat}
+            onClick={() => setCategory(el.cat)}
+            className={category === el.cat ? 'menu__item selected' : 'menu__item'}
+          >
+            {el.name}
+          </li>
+        )
+      })}
     </ul>
   )
 }

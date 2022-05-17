@@ -8,6 +8,7 @@ import Navbar from './Navbar/Navbar'
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   const [modalProductsActive, setModalProductsActive] = useState(false)
+  const [category, setCategory] = useState('pizza')
 
   return (
     <div className='app'>
@@ -32,6 +33,8 @@ function App() {
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
             <Navbar
+              category={category}
+              setCategory={setCategory}
               setModalFillingsActive={setModalFillingsActive}
               setModalProductsActive={setModalProductsActive}
             ></Navbar>

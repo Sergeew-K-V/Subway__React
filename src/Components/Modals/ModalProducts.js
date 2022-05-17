@@ -9,7 +9,7 @@ function ModalProducts({ setModalProductsActive }) {
     imageFile: {},
     price: 0,
     description: '',
-    productsType: 'Pizza',
+    productsType: 'pizza',
   })
   const { request } = useHttp()
 
@@ -31,7 +31,7 @@ function ModalProducts({ setModalProductsActive }) {
       (form.name = null),
       (form.price = null),
       (form.description = null),
-      (form.productsType = 'Pizza')
+      (form.productsType = 'pizza')
     )
   }
 
@@ -108,25 +108,25 @@ function ModalProducts({ setModalProductsActive }) {
             value={form.productsType}
             onChange={changeHandler}
           >
-            <option value='Pizza' key='pizza'>
+            <option value='pizza' key='pizza'>
               Пицца
             </option>
-            <option value='Burger' key='burger'>
+            <option value='burger' key='burger'>
               Бургер
             </option>
-            <option value='Sandwich' key='sandwich'>
+            <option value='sandwich' key='sandwich'>
               Сендвич
             </option>
-            <option value='Drinks' key='drinks'>
+            <option value='drinks' key='drinks'>
               Напитки
             </option>
-            <option value='Salads' key='salads'>
+            <option value='salads' key='salads'>
               Салат
             </option>
-            <option value='Shaurma' key='shaurma'>
+            <option value='shaurma' key='shaurma'>
               Шаурма
             </option>
-            <option value='Chiken' key='chiken'>
+            <option value='chicken' key='chicken'>
               Курица
             </option>
           </select>

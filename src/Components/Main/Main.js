@@ -5,13 +5,13 @@ import Loader from '../Loader'
 let counter = 1
 
 function Main() {
-  const [mainData, setMainData] = useState([])
-  const { request } = useHttp()
-  const [loading, setLoading] = useState(false)
   useEffect(() => {
     console.log('render', counter)
     counter++
-  })
+  }, [])
+  const [mainData, setMainData] = useState([])
+  const { request } = useHttp()
+  const [loading, setLoading] = useState(false)
   async function getterHandler() {
     // URLSearchParams
     try {
@@ -34,7 +34,6 @@ function Main() {
     <div className='main__content' id='root-subMain-right'>
       <div className='container-content'>
         <div className='main__flex'>
-          {/* {console.log(mainData)} */}
           {loading ? (
             <Loader></Loader>
           ) : mainData.length !== 0 ? (

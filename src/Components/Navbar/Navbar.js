@@ -6,12 +6,12 @@ import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
 import '../../css/navbar.css'
 
-function Navbar({ setModalFillingsActive, setModalProductsActive }) {
+function Navbar({ setModalFillingsActive, setModalProductsActive, category, setCategory }) {
   return (
     <div className='navbar__block'>
       <div className='navbar__top'>
         <div className='navbar__menu-block' id='menu__root'>
-          <Menu></Menu>
+          <Menu category={category} setCategory={setCategory}></Menu>
         </div>
       </div>
       <div className='navbar__middle'>
