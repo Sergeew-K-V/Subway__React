@@ -4,11 +4,12 @@ import Product from './Product'
 import Loader from '../Loader'
 let counter = 1
 
-function Main({ category }) {
+function Main({ category, posted }) {
   useEffect(() => {
     console.log('render', counter)
     counter++
-  }, [category])
+  })
+
   const [mainData, setMainData] = useState([])
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)
@@ -29,7 +30,8 @@ function Main({ category }) {
       getterHandler()
       setLoading(false)
     }, 2000)
-  }, [])
+  }, [posted])
+
   return (
     <div className='main__content' id='root-subMain-right'>
       <div className='container-content'>

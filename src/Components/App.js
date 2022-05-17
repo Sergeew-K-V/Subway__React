@@ -9,7 +9,7 @@ function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   const [modalProductsActive, setModalProductsActive] = useState(false)
   const [category, setCategory] = useState('pizza')
-
+  const [posted, setPosted] = useState(false)
   return (
     <div className='app'>
       {modalFillingsActive && (
@@ -18,7 +18,11 @@ function App() {
       )}
       {modalProductsActive && (
         // Route here need use
-        <ModalProducts setModalProductsActive={setModalProductsActive}></ModalProducts>
+        <ModalProducts
+          setPosted={setPosted}
+          posted={posted}
+          setModalProductsActive={setModalProductsActive}
+        ></ModalProducts>
       )}
       <header className='header'>
         <div className='container-middle'>
@@ -38,7 +42,7 @@ function App() {
               setModalFillingsActive={setModalFillingsActive}
               setModalProductsActive={setModalProductsActive}
             ></Navbar>
-            <Main category={category}></Main>
+            <Main category={category} posted={posted}></Main>
           </div>
         </div>
       </main>

@@ -2,7 +2,7 @@ import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
-function ModalProducts({ setModalProductsActive }) {
+function ModalProducts({ setModalProductsActive, setPosted, posted }) {
   const formData = new FormData()
   const [form, setForm] = useState({
     name: '',
@@ -53,6 +53,7 @@ function ModalProducts({ setModalProductsActive }) {
         alert(value.message)
         clearForm()
         setModalProductsActive(false)
+        setPosted(!posted)
       })
     } catch (e) {}
   }

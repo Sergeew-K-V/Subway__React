@@ -2,7 +2,7 @@ import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
-function ModalFillings({ setModalFillingsActive }) {
+function ModalFillings({ setModalFillingsActive, setPosted }) {
   const [form, setForm] = useState({
     name: null,
     price: null,
