@@ -6,18 +6,22 @@ let counter = 1
 
 function Main({ category, posted }) {
   useEffect(() => {
-    console.log('render', counter)
+    console.log('Render', counter)
     counter++
   })
-
   const [mainData, setMainData] = useState([])
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)
+
+  const params = new URLSearchParams('cat')
+  console.log('params', params)
+
+  //Взять и делать фильтр в URL ?pizza and e.t.c, и в req  я буду получать  paramas or code?  и по ним отдавать данные из бд - как то так? и стоит ли добавлять реакт роутер дом чтобы URL изначально сопадал с URL запросом?
+
   async function getterHandler() {
     // URLSearchParams
     try {
-      const data = await request('/products', 'GET')
-
+      const data = await request(`/products/?${category}`, 'GET')
       if (data !== undefined && data !== null && !loading) {
         setMainData(data.products)
       }
