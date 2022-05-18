@@ -2,13 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import Product from './Product'
 import Loader from '../Loader'
-let counter = 1
 
 function Main({ category, posted }) {
-  useEffect(() => {
-    console.log('Render', counter)
-    counter++
-  })
   const [mainData, setMainData] = useState([])
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)
@@ -34,7 +29,7 @@ function Main({ category, posted }) {
     setTimeout(() => {
       getterHandler()
       setLoading(false)
-    }, 2000)
+    }, 1000)
   }, [posted, category])
 
   return (
