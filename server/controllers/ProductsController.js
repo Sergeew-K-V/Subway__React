@@ -14,9 +14,16 @@ const CreateProductCheck = [
 const GetAllProduct = async (req, res) => {
   try {
     // console.log('request', req.url)
-    console.log('request', req.query)
+    console.log('request', req.query.category)
     const products = await Product.find()
-    return res.json({ products })
+    const productsToFront = products.filter((el) => el.productsType === req.query.category)
+    console.log('productsToFront', productsToFront)
+    // const productsToFront = products.map((el) => {
+    //   if (el.productsType === req.query.category) {
+    //     return el
+    //   }
+    // })
+    return res.json({ productsToFront })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useHttp } from '../../hooks/http.hook'
 import Product from './Product'
 import Loader from '../Loader'
-import { param } from 'express-validator'
 let counter = 1
 
 function Main({ category, posted }) {
@@ -14,7 +13,7 @@ function Main({ category, posted }) {
   const { request } = useHttp()
   const [loading, setLoading] = useState(false)
 
-  const params = new URLSearchParams({ category })
+  // const params = new URLSearchParams({ category })
   // console.log('params', params.getAll('category'))
 
   //Взять и делать фильтр в URL ?pizza and e.t.c, и в req  я буду получать  paramas or code?  и по ним отдавать данные из бд - как то так? и стоит ли добавлять реакт роутер дом чтобы URL изначально сопадал с URL запросом?
@@ -24,8 +23,8 @@ function Main({ category, posted }) {
     try {
       const data = await request(`/products?category=${category}`, 'GET')
       // console.log('category', category)
-      if (data !== undefined && data !== null && !loading) {
-        setMainData(data.products)
+      if (data !== undefined && data !== null) {
+        setMainData(data.productsToFront)
       }
     } catch (e) {}
   }
