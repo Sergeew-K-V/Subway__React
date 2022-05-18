@@ -3,7 +3,7 @@ import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
 
-function ModalCustom() {
+function ModalCustom({ setModalCustomActive }) {
   return (
     <div className='modal-overlay' id='modal-overlay'>
       <div className='modal'>
@@ -11,7 +11,7 @@ function ModalCustom() {
           <div className='modal__block' id='modal-block'>
             <div className='modal__header'>
               <span>Выберите размер сендвича</span>
-              <div className='modal__close'>
+              <div className='modal__close' onClick={() => setModalCustomActive(false)}>
                 <span></span>
               </div>
             </div>
@@ -97,7 +97,7 @@ function ModalCustom() {
                 {/* ${this.currentArrayOfData !== undefined ? this.currentArrayOfData : ''} */}
                 <div className='modal__footer' id='modal-total-bottom-root'>
                   <div className='modal__total-price'>
-                    <span>Итого: ${this.dataModal.price} руб.</span>
+                    {/* <span>Итого: ${this.dataModal.price} руб.</span> */}
                   </div>
                 </div>
               </div>

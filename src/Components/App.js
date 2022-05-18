@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../css/app.css'
 import Main from './Main/Main'
+import ModalCustom from './Modals/ModalCustom/ModalCustom'
 import ModalFillings from './Modals/ModalFillings'
 import ModalProducts from './Modals/ModalProducts'
 import Navbar from './Navbar/Navbar'
@@ -8,11 +9,13 @@ import Navbar from './Navbar/Navbar'
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   const [modalProductsActive, setModalProductsActive] = useState(false)
+  const [modalCustomActive, setModalCustomActive] = useState(false)
 
   const [category, setCategory] = useState('pizza')
   const [posted, setPosted] = useState(false)
   return (
     <div className='app'>
+      {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}
       {modalFillingsActive && (
         // Route here need use
         <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
@@ -40,6 +43,7 @@ function App() {
             <Navbar
               category={category}
               setCategory={setCategory}
+              setModalCustomActive={setModalCustomActive}
               setModalFillingsActive={setModalFillingsActive}
               setModalProductsActive={setModalProductsActive}
             ></Navbar>

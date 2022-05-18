@@ -1,8 +1,13 @@
 import React from 'react'
 
-function Custom() {
+function Custom({ setModalCustomActive }) {
   return (
-    <div className='navbar__btn-custom'>
+    <div
+      className='navbar__btn-custom'
+      onClick={() => {
+        setModalCustomActive(true)
+      }}
+    >
       <button id='btn-custom'>
         <span>Собрать свой</span>
       </button>

@@ -6,7 +6,13 @@ import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
 import '../../css/navbar.css'
 
-function Navbar({ setModalFillingsActive, setModalProductsActive, category, setCategory }) {
+function Navbar({
+  setModalFillingsActive,
+  setModalProductsActive,
+  setModalCustomActive,
+  category,
+  setCategory,
+}) {
   return (
     <div className='navbar__block'>
       <div className='navbar__top'>
@@ -17,7 +23,7 @@ function Navbar({ setModalFillingsActive, setModalProductsActive, category, setC
       <div className='navbar__middle'>
         <Fillings setModalFillingsActive={setModalFillingsActive}></Fillings>
         <ProductBtn setModalProductsActive={setModalProductsActive}></ProductBtn>
-        <Custom></Custom>
+        <Custom setModalCustomActive={setModalCustomActive}></Custom>
       </div>
       <div className='navbar__bottom' id='basket-root'>
         {/* <!-- Here is a basket --> */}
