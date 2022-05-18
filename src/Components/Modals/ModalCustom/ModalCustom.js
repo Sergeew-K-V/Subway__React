@@ -2,13 +2,24 @@ import React, { useState } from 'react'
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
+import NavbarItem from './items/NavbarItem'
 
 function ModalCustom({ setModalCustomActive }) {
+  const navbarItems = [
+    { text: 'Размер', counter: 0 },
+    { text: 'Хлеб', counter: 1 },
+    { text: 'Овощи', counter: 2 },
+    { text: 'Соусы', counter: 3 },
+    { text: 'Начинка', counter: 4 },
+    { text: 'Готово!', counter: 5 },
+  ]
+
   const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState(0)
-  const id = Date.now().slice(7, 14)
+  const id = Date.now().toString().slice(7, 14)
   const [name, setName] = useState(`Custom-product-${id}`)
   const [customProduct, setCustomProduct] = useState({ id, name, price, quantity })
+  const [currentPage, setCurrentPage] = useState(0)
 
   return (
     <div className='modal-overlay' id='modal-overlay'>
@@ -23,81 +34,42 @@ function ModalCustom({ setModalCustomActive }) {
             </div>
             <div className='modal__body' id='place-for-modal-content'>
               <div className='body__navbar'>
-                {/* <ul className='body__navbar-section'>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 0 ? 'selected' : ''
-                    }"
-                    id='navbar-item-0'
-                  >
-                    Размер
-                  </li>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 1 ? 'selected' : ''
-                    }"
-                    id='navbar-item-1'
-                  >
-                    Хлеб
-                  </li>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 2 ? 'selected' : ''
-                    }"
-                    id='navbar-item-2'
-                  >
-                    Овощи
-                  </li>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 3 ? 'selected' : ''
-                    }"
-                    id='navbar-item-3'
-                  >
-                    Соусы
-                  </li>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 4 ? 'selected' : ''
-                    }"
-                    id='navbar-item-4'
-                  >
-                    Начинка
-                  </li>
-                  <li
-                    className="navbar__item ${
-                      this.dataModal.currentPage === 5 ? 'selected' : ''
-                    }"
-                    id='navbar-item-5'
-                  >
-                    Готово!
-                  </li>
-                </ul> */}
+                <ul className='body__navbar-section'>
+                  {navbarItems.map((el) => (
+                    <NavbarItem
+                      key={el.counter}
+                      text={el.text}
+                      counter={el.counter}
+                      currentPage={currentPage}
+                      setCurrentPage={setCurrentPage}
+                    ></NavbarItem>
+                  ))}
+                </ul>
               </div>
-              {/* <div
-                className="modal__btn-list ${this.dataModal.currentPage === 0 ? 'hiddenBack' : ''} ${
-          this.dataModal.currentPage === 5 ? 'hiddenNext' : ''
-        }"
+              <div
+                className={
+                  currentPage === 0
+                    ? 'modal__btn-list hiddenBack'
+                    : 'modal__btn-list' && currentPage === 5
+                    ? 'modal__btn-list hiddenNext'
+                    : 'modal__btn-list'
+                }
               >
                 <button
-                  className="modal__btn ${
-                    this.dataModal.currentPage === 0 ? 'hidden' : ''
-                  }"
+                  className={currentPage === 0 ? 'modal__btn hidden' : 'modal__btn '}
                   id='btn-back'
                 >
-                  <img src={chevronLeft} className='fa-solid fa-chevron-left'></img>
+                  <img src={chevronLeft} className='fa-arrow fa-chevron-left'></img>
                   <span>Назад</span>
                 </button>
                 <button
-                  className="modal__btn ${
-                    this.dataModal.currentPage === 5 ? 'hidden' : ''
-                  }"
+                  className={currentPage === 5 ? 'modal__btn hidden' : 'modal__btn '}
                   id='btn-next'
                 >
                   <span>Вперед</span>
-                  <img src={chevronRight} className='fa-solid fa-angle-right'></img>
+                  <img src={chevronRight} className='fa-arrow fa-angle-right'></img>
                 </button>
-              </div> */}
+              </div>
               <div className='modal__content' id='content-card-root'>
                 {/* ModalCustomCard */}
                 {/* ${this.currentArrayOfData !== undefined ? this.currentArrayOfData : ''} */}

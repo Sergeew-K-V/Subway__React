@@ -433,6 +433,10 @@
   background-color: white;
 }
 
+.fa-arrow {
+  height: 20px;
+}
+
 .fa-minus {
   padding: 5px;
   cursor: pointer;
