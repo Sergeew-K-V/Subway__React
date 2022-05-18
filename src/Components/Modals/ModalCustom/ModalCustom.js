@@ -57,6 +57,9 @@ function ModalCustom({ setModalCustomActive }) {
               >
                 <button
                   className={currentPage === 0 ? 'modal__btn hidden' : 'modal__btn '}
+                  onClick={(e) => {
+                    setCurrentPage(currentPage - 1)
+                  }}
                   id='btn-back'
                 >
                   <img src={chevronLeft} className='fa-arrow fa-chevron-left'></img>
@@ -64,6 +67,9 @@ function ModalCustom({ setModalCustomActive }) {
                 </button>
                 <button
                   className={currentPage === 5 ? 'modal__btn hidden' : 'modal__btn '}
+                  onClick={(e) => {
+                    setCurrentPage(currentPage + 1)
+                  }}
                   id='btn-next'
                 >
                   <span>Вперед</span>
