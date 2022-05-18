@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
 
 function ModalCustom({ setModalCustomActive }) {
+  const [price, setPrice] = useState(0)
+  const [quantity, setQuantity] = useState(0)
+  const id = Date.now().slice(7, 14)
+  const [name, setName] = useState(`Custom-product-${id}`)
+  const [customProduct, setCustomProduct] = useState({ id, name, price, quantity })
+
   return (
     <div className='modal-overlay' id='modal-overlay'>
       <div className='modal'>
