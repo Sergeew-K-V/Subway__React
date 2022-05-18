@@ -81,7 +81,7 @@ function ModalCustom({ setModalCustomActive }) {
                 {/* ${this.currentArrayOfData !== undefined ? this.currentArrayOfData : ''} */}
                 <div className='modal__footer' id='modal-total-bottom-root'>
                   <div className='modal__total-price'>
-                    {/* <span>Итого: ${this.dataModal.price} руб.</span> */}
+                    <span>Итого: {customProduct.price} руб.</span>
                   </div>
                 </div>
               </div>
