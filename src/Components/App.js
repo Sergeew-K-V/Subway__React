@@ -8,6 +8,7 @@ import Navbar from './Navbar/Navbar'
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
   const [modalProductsActive, setModalProductsActive] = useState(false)
+
   const [category, setCategory] = useState('pizza')
   const [posted, setPosted] = useState(false)
   return (

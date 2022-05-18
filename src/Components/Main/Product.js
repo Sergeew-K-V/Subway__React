@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import minus from '../../img/minus-solid.svg'
 import plus from '../../img/plus-solid.svg'
 import LOGO from '../../img/markets/subway_logo.png'
@@ -7,6 +7,11 @@ import '../../css/subway.css'
 function Product({ id, name, price, description, imageFile }) {
   const serverUrl = 'http://localhost:2323/'
   const [quantity, setQuantity] = useState(0)
+  const [productObj, setProductObj] = useState({ id, name, price, quantity })
+  const productHandler = () => {}
+  useEffect(() => {
+    setProductObj({ ...productObj, quantity })
+  }, [quantity])
   return (
     <div className='subway__block' id={id}>
       <div className='subway__flex'>
@@ -40,8 +45,8 @@ function Product({ id, name, price, description, imageFile }) {
               <input
                 type='number'
                 className='btns-list__btn subway-input'
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                value={productObj.quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
                 min={0}
               />
               <button
@@ -55,7 +60,14 @@ function Product({ id, name, price, description, imageFile }) {
             </div>
           </div>
           <div className='subway__btn-to-basket'>
-            <button className='btn-to-basket__btn'>В корзину</button>
+            <button
+              className='btn-to-basket__btn'
+              onClick={() => {
+                productHandler()
+              }}
+            >
+              В корзину
+            </button>
           </div>
         </div>
       </div>
