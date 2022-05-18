@@ -13,6 +13,8 @@ const CreateProductCheck = [
 ]
 const GetAllProduct = async (req, res) => {
   try {
+    // console.log('request', req.url)
+    console.log('request', req.query)
     const products = await Product.find()
     return res.json({ products })
   } catch (error) {
