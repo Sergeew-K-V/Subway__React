@@ -8,7 +8,6 @@ function Product({ id, name, price, description, imageFile }) {
   const serverUrl = 'http://localhost:2323/'
   const [quantity, setQuantity] = useState(0)
   const [productObj, setProductObj] = useState({ id, name, price, quantity })
-  const productHandler = () => {}
   useEffect(() => {
     setProductObj({ ...productObj, quantity })
   }, [quantity])
@@ -63,7 +62,8 @@ function Product({ id, name, price, description, imageFile }) {
             <button
               className='btn-to-basket__btn'
               onClick={() => {
-                productHandler()
+                alert(`productObj`)
+                return productObj
               }}
             >
               В корзину
