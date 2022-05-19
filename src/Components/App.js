@@ -13,6 +13,7 @@ function App() {
 
   const [category, setCategory] = useState('pizza')
   const [posted, setPosted] = useState(false)
+
   return (
     <div className='app'>
       {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}

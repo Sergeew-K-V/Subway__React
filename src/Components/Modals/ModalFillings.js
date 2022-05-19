@@ -2,37 +2,38 @@ import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
 
-function ModalFillings({ setModalFillingsActive, setPosted }) {
+function ModalFillings({ setModalFillingsActive }) {
+  const formData = new FormData()
   const [form, setForm] = useState({
-    name: null,
-    price: null,
-    // image: null,
-    fillingsType: 'Size',
+    name: '',
+    price: '',
+    imageFile: {},
+    fillingsType: 'size',
   })
   const { request } = useHttp()
-
-  // const [name, setName] = useState('')
-  // const [price, setPrice] = useState(0)
 
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
       setForm({ ...form, [event.target.name]: Number(event.target.value) })
+    }
+    if (event.target.files) {
+      setForm({ ...form, [event.target.name]: event.target.files[0] })
     } else {
       setForm({ ...form, [event.target.name]: event.target.value })
     }
   }
   const clearForm = () => {
-    setForm((form.name = null), (form.price = null), (form.fillingsType = 'Size'))
+    setForm((form.name = ''), (form.price = ''), (form.fillingsType = 'size'))
   }
-  // const getterHandler = async () => {
-  //   try {
-  //     const data = request('/fillings',undefined,undefined)
-  //   } catch (e) {}
-  // }
-
+  function convertToFormData(obj) {
+    for (const key in obj) {
+      formData.set(key, obj[key])
+    }
+  }
   const postHandler = async () => {
     try {
-      const data = request('/fillings', 'POST', { ...form })
+      convertToFormData(form)
+      const data = request('/fillings', 'POST', formData)
       data.then((value) => {
         alert(value.message)
         clearForm()
@@ -61,6 +62,7 @@ function ModalFillings({ setModalFillingsActive, setPosted }) {
           <p className='modal-fillings__item'>Название</p>
           <input
             type='text'
+            value={form.name}
             placeholder='Введите название'
             className='modal-fillings__input modal-fillings__item'
             name='name'
@@ -69,6 +71,7 @@ function ModalFillings({ setModalFillingsActive, setPosted }) {
           <p className='modal-fillings__item'>Цена</p>
           <input
             type='number'
+            value={form.price}
             placeholder='Введите цену'
             className='modal-fillings__input modal-fillings__item'
             name='price'
@@ -78,21 +81,22 @@ function ModalFillings({ setModalFillingsActive, setPosted }) {
           <select
             className='modal-fillings__item modal-fillings__select'
             name='fillingsType'
+            value={form.fillingsType}
             onChange={changeHandler}
           >
-            <option value='Size' key='sizes'>
+            <option value='size' key='sizes'>
               Размер
             </option>
-            <option value='Bread' key='breads'>
+            <option value='bread' key='breads'>
               Хлеб
             </option>
-            <option value='Vegetables' key='vegentables'>
+            <option value='vegetables' key='vegentables'>
               Овощи
             </option>
-            <option value='Sauce' key='sauces'>
+            <option value='sauce' key='sauces'>
               Соус
             </option>
-            <option value='Fillings' key='fillings'>
+            <option value='fillings' key='fillings'>
               Начинка
             </option>
           </select>
@@ -101,7 +105,7 @@ function ModalFillings({ setModalFillingsActive, setPosted }) {
             type='file'
             placeholder='Добавте картинку'
             className='modal-fillings__input modal-fillings__item'
-            name='image'
+            name='imageFile'
             onChange={changeHandler}
           />
           <button

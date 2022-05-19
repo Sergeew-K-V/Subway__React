@@ -1,11 +1,10 @@
 const Filling = require('../models/Filling')
-
 const { check, validationResult } = require('express-validator')
 const { default: mongoose } = require('mongoose')
+
 const CreateFillingCheck = [
   check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
-  // check('image', 'Error on validation image').isString(),
   check('fillingsType', 'Error on validation fillingsType').isString().trim(),
 ]
 
@@ -18,30 +17,30 @@ const CreateFilling = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    const { name, price, image, fillingsType } = req.body
+
+    const { name, price, imageFile = req.file.path.slice(7), fillingsType } = req.body
 
     const existFilling = await Filling.findOne({ name })
 
     if (existFilling) {
       return res.status(400).json({ message: `Filling ${name} already exist` })
     }
-    // const filling = new Filling({ name, price, type })
-    // await filling.save()
-    const filling = await Filling.create(req.body)
+    const filling = await Filling.create({ ...req.body, imageFile })
 
     res.status(201).json({ message: `The filling ${name} was created succesfully`, filling })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }
 }
-const DeleteFilling = (req, res) => {}
 const GetAllFilling = async (req, res) => {
-  const fillings = await Filling.find()
-  return res.json({ fillings })
+  try {
+    const fillings = await Filling.find()
+    const fillingsToFront = fillings.filter((el) => el.fillingsType === req.query.category)
+    return res.json({ fillingsToFront })
+  } catch (error) {}
 }
 module.exports = {
   GetAllFilling,
-  DeleteFilling,
   CreateFilling,
   CreateFillingCheck,
 }

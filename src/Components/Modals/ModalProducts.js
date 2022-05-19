@@ -13,9 +13,6 @@ function ModalProducts({ setModalProductsActive, setPosted, posted }) {
   })
   const { request } = useHttp()
 
-  //   const [name, setName] = useState('')
-  //   const [price, setPrice] = useState(0)
-
   const changeHandler = (event) => {
     if (event.target.name === 'price') {
       setForm({ ...form, [event.target.name]: Number(event.target.value) })

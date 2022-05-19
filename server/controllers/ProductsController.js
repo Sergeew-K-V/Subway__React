@@ -8,21 +8,8 @@ const CreateProductCheck = [
   check('name', 'Error on validation name').isString().trim(),
   check('price', 'Error on validation price').isNumeric(),
   check('description', 'Error on validation description').isString().trim(),
-  // check('imageFile', 'Error on validation image').is,
   check('productsType', 'Error on validation productsType').isString().trim(),
 ]
-const GetAllProduct = async (req, res) => {
-  try {
-    // console.log('request', req.url)
-    // console.log('request', req.query.category)
-    const products = await Product.find()
-    const productsToFront = products.filter((el) => el.productsType === req.query.category)
-
-    return res.json({ productsToFront })
-  } catch (error) {
-    res.status(500).json({ message: `Error ${error}` })
-  }
-}
 const CreateProduct = async (req, res, next) => {
   try {
     const errors = validationResult(req)
@@ -50,6 +37,18 @@ const CreateProduct = async (req, res, next) => {
   }
 }
 
+const GetAllProduct = async (req, res) => {
+  try {
+    // console.log('request', req.url)
+    // console.log('request', req.query.category)
+    const products = await Product.find()
+    const productsToFront = products.filter((el) => el.productsType === req.query.category)
+
+    return res.json({ productsToFront })
+  } catch (error) {
+    res.status(500).json({ message: `Error ${error}` })
+  }
+}
 module.exports = {
   CreateProduct,
   CreateProductCheck,

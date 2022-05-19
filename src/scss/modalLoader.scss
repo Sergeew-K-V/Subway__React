@@ -1,0 +1,29 @@
+.modalLoader__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.modalLoader__lds-dual-ring {
+  display: inline-block;
+  width: 164px;
+  height: 371px;
+}
+.modalLoader__lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 164px;
+  height: 164px;
+  margin: 100px auto;
+  border-radius: 50%;
+  border: 6px solid orange;
+  border-color: orange transparent orange transparent;
+  animation: lds-dual-ring 0.7s linear infinite;
+}
+@keyframes modalLoader__lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
