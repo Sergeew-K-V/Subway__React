@@ -51,6 +51,7 @@ function ModalCustom({ setModalCustomActive }) {
   ]
   const [arrayOfCards, setArrayOfCards] = useState([])
   const { request } = useHttp()
+
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -58,12 +59,19 @@ function ModalCustom({ setModalCustomActive }) {
       setLoading(false)
     }, 1000)
   }, [])
+
+  useEffect(() => {
+    compareCatAndCP()
+  }, [currentPage])
+
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       getCards()
+      setLoading(false)
     }, 1000)
-  }, [currentPage])
+  }, [categoryFillings])
+
   const getCards = async () => {
     try {
       const data = await request(`/fillings?category=${categoryFillings}`, 'GET')
