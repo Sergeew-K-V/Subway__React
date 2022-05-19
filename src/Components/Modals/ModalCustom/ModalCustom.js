@@ -3,16 +3,34 @@ import { useHttp } from '../../../hooks/http.hook'
 import NavbarItem from './items/NavbarItem'
 import ModalLoader from './items/ModalLoader'
 import ModalCustomCard from './items/ModalCustomCard'
+import ModalCustomTotal from './items/ModalCustomTotal'
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
 
 function ModalCustom({ setModalCustomActive }) {
   const id = Date.now().toString().slice(7, 14)
+  const [name, setName] = useState(`Custom-product-${id}`)
   const [price, setPrice] = useState(0)
   const [quantity, setQuantity] = useState(0)
-  const [name, setName] = useState(`Custom-product-${id}`)
-  const [customProduct, setCustomProduct] = useState({ id, name, price, quantity })
+
+  const [size, setSize] = useState([])
+  const [bread, setBread] = useState([])
+  const [vegetables, setVegetables] = useState([])
+  const [sauce, setSauces] = useState([])
+  const [fillings, setFillings] = useState([])
+
+  const [customProduct, setCustomProduct] = useState({
+    id,
+    name,
+    price,
+    quantity,
+    size,
+    bread,
+    sauce,
+    vegetables,
+    fillings,
+  })
   const [currentPage, setCurrentPage] = useState(0)
 
   const [categoryFillings, setCategoryFillings] = useState('size')
@@ -35,9 +53,8 @@ function ModalCustom({ setModalCustomActive }) {
       case 4:
         setCategoryFillings('fillings')
         break
-      // case 5:
-      //   setCategoryFillings('total')
-      //   break
+      default:
+        setCategoryFillings('size')
     }
   }
 
@@ -65,11 +82,13 @@ function ModalCustom({ setModalCustomActive }) {
   }, [currentPage])
 
   useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      getCards()
-      setLoading(false)
-    }, 1000)
+    if (currentPage !== 5) {
+      setLoading(true)
+      setTimeout(() => {
+        getCards()
+        setLoading(false)
+      }, 1000)
+    }
   }, [categoryFillings])
 
   const getCards = async () => {
@@ -136,7 +155,13 @@ function ModalCustom({ setModalCustomActive }) {
                 </button>
               </div>
               <div className='modal__content' id='content-card-root'>
-                {loading ? (
+                {currentPage === 5 ? (
+                  loading ? (
+                    <ModalLoader></ModalLoader>
+                  ) : (
+                    <ModalCustomTotal></ModalCustomTotal>
+                  )
+                ) : loading ? (
                   <ModalLoader></ModalLoader>
                 ) : arrayOfCards.length !== 0 ? (
                   arrayOfCards.map((el) => (

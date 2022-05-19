@@ -1,14 +1,15 @@
 import React from 'react'
-import plus from '../../../img/plus-solid.svg'
-import minus from '../../../img/minus-solid.svg'
+import plus from '../../../../img/plus-solid.svg'
+import minus from '../../../../img/minus-solid.svg'
+import resultProduct from '../../../../img/result_sandwich.jpg'
 
-function ModalCustomTotal() {
+function ModalCustomTotal({ customProduct }) {
   return (
     <div className='modal__content-total' id='modal-summary'>
       <div className='content-total__block'>
         <div className='block__left'>
           <div className='content-total__img '>
-            {/* <img src='/src/img/icons/result_sandwich.jpg' alt='el-15cm' /> */}
+            <img src={resultProduct} alt='result-sandwich' />
           </div>
         </div>
         <div className='block__right'>
@@ -17,10 +18,10 @@ function ModalCustomTotal() {
           </div>
           <div className='right__middle'>
             <div className='middle__size middle__item'>
-              {/* <span>Размер: ${this.customSubway.size}</span> */}
+              <span>Размер: {customProduct.size}</span>
             </div>
             <div className='middle__bread middle__item'>
-              {/* <span>Хлеб: ${this.customSubway.bread}</span> */}
+              <span>Хлеб: {customProduct.bread}</span>
             </div>
             <div className='middle__vegentables middle__item'>
               {/* <span>Овощи: ${this.customSubway.vegetables}</span> */}
