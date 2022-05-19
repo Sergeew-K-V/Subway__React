@@ -6,6 +6,8 @@ import ModalCustomCard from './items/ModalCustomCard'
 import ModalCustomTotal from './items/ModalCustomTotal'
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
+import plus from '../../../img/plus-solid.svg'
+import minus from '../../../img/minus-solid.svg'
 import '../../../css/modal.css'
 
 function ModalCustom({ setModalCustomActive }) {
@@ -53,8 +55,6 @@ function ModalCustom({ setModalCustomActive }) {
       case 4:
         setCategoryFillings('fillings')
         break
-      default:
-        setCategoryFillings('size')
     }
   }
 
@@ -69,13 +69,13 @@ function ModalCustom({ setModalCustomActive }) {
   const [arrayOfCards, setArrayOfCards] = useState([])
   const { request } = useHttp()
 
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      getCards()
-      setLoading(false)
-    }, 1000)
-  }, [])
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     getCards()
+  //     setLoading(false)
+  //   }, 1000)
+  // }, [])
 
   useEffect(() => {
     compareCatAndCP()
@@ -159,7 +159,7 @@ function ModalCustom({ setModalCustomActive }) {
                   loading ? (
                     <ModalLoader></ModalLoader>
                   ) : (
-                    <ModalCustomTotal></ModalCustomTotal>
+                    <ModalCustomTotal customProduct={customProduct}></ModalCustomTotal>
                   )
                 ) : loading ? (
                   <ModalLoader></ModalLoader>
@@ -182,11 +182,52 @@ function ModalCustom({ setModalCustomActive }) {
                 )}
               </div>
             </div>
-            <div className='modal__footer' id='modal-total-bottom-root'>
-              <div className='modal__total-price'>
-                <span>Итого: {customProduct.price} руб.</span>
+
+            {currentPage !== 5 ? (
+              <div className='modal__footer' id='modal-total-bottom-root'>
+                <div className='modal__total-price'>
+                  <span>Итого: {customProduct.price} руб.</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className='modal__footer' id='modal-total-bottom-root'>
+                <div className='modal__btn-block'>
+                  <div className='modal-block__text'>Количество</div>
+                  <div className='modal-block__btns-list'>
+                    <button
+                      className='btns-modal__btn'
+                      onClick={(e) =>
+                        customProduct.quantity !== 0 && setQuantity(customProduct.quantity - 1)
+                      }
+                    >
+                      <img src={minus} className='fa-solid fa-minus'></img>
+                    </button>
+                    <input
+                      type='number'
+                      className='btns-modal__btn modal-input'
+                      value={customProduct.quantity}
+                      onChange={(e) => {
+                        if (e.target.value > 0) setQuantity(e.target.value)
+                      }}
+                    />
+                    <button
+                      className='btns-modal__btn'
+                      onClick={(e) => {
+                        setQuantity(customProduct.quantity + 1)
+                      }}
+                    >
+                      <img src={plus} className='fa-solid fa-plus'></img>
+                    </button>
+                  </div>
+                </div>
+                <div className='modal__total-price'>
+                  <span>Итого: {customProduct.price} руб.</span>
+                  <div className='modal__btn-to-basket'>
+                    <button className='btn-to-basket__btn'>В корзину</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

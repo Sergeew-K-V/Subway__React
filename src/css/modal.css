@@ -427,11 +427,14 @@
 }
 
 .btns-modal__btn {
-  margin: 0 10px;
+  margin: 0 5px;
   border-radius: 50%;
   border: 1px solid grey;
   font-size: 20px;
   background-color: white;
+  padding: 10px;
+  color: grey;
+  cursor: pointer;
 }
 
 .fa-arrow {
@@ -439,17 +442,24 @@
 }
 
 .fa-minus {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.modal-input {
-  max-width: 7%;
-  border-radius: 5px;
-  text-align: center;
+  color: black;
+  width: 20px;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .fa-plus {
-  cursor: pointer;
-  padding: 5px;
+  color: black;
+  width: 20px;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.modal-input {
+  text-align: center;
+  width: 10%;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
 }
