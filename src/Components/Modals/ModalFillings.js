@@ -93,7 +93,7 @@ function ModalFillings({ setModalFillingsActive }) {
             <option value='vegetables' key='vegentables'>
               Овощи
             </option>
-            <option value='sauce' key='sauces'>
+            <option value='sauces' key='sauces'>
               Соус
             </option>
             <option value='fillings' key='fillings'>
