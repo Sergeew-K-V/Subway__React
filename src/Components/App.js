@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import '../css/app.css'
+import { useState } from 'react'
+import Header from './Header'
 import Main from './Main/Main'
+import Navbar from './Navbar/Navbar'
 import ModalCustom from './Modals/ModalCustom/ModalCustom'
 import ModalFillings from './Modals/ModalFillings'
 import ModalProducts from './Modals/ModalProducts'
-import Navbar from './Navbar/Navbar'
+import '../css/app.css'
 
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
@@ -29,15 +30,7 @@ function App() {
           setModalProductsActive={setModalProductsActive}
         ></ModalProducts>
       )}
-      <header className='header'>
-        <div className='container-middle'>
-          <div className='header__block'>
-            <div className='header__title'>
-              <h1>Сделайте заказ напрямую из ресторана</h1>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header></Header>
       <main className='main'>
         <div className='container-big'>
           <div className='main__block' id='root-main-right'>
