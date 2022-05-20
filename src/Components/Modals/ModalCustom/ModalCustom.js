@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useHttp } from '../../../hooks/http.hook'
+import { mapping, navbarItems } from './staticOfModalCustom'
 import NavbarItem from './items/NavbarItem'
 import ModalLoader from './items/ModalLoader'
 import ModalCustomCard from './items/ModalCustomCard'
 import ModalCustomTotal from './items/ModalCustomTotal'
+import ModalCustomFooterDefault from './items/ModalCustomFooterDefault'
+import ModalCustomFooterTotal from './items/ModalCustomFooterTotal'
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
-import plus from '../../../img/plus-solid.svg'
-import minus from '../../../img/minus-solid.svg'
 import '../../../css/modal.css'
 
 function ModalCustom({ setModalCustomActive }) {
@@ -22,6 +23,13 @@ function ModalCustom({ setModalCustomActive }) {
   const [sauce, setSauces] = useState([])
   const [fillings, setFillings] = useState([])
 
+  const { request } = useHttp()
+
+  const [arrayOfCards, setArrayOfCards] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const [categoryFillings, setCategoryFillings] = useState('size')
+  const [loading, setLoading] = useState(false)
+
   const [customProduct, setCustomProduct] = useState({
     id,
     name,
@@ -33,41 +41,15 @@ function ModalCustom({ setModalCustomActive }) {
     vegetables,
     fillings,
   })
-  const [currentPage, setCurrentPage] = useState(0)
 
-  const [categoryFillings, setCategoryFillings] = useState('size')
-  const [loading, setLoading] = useState(false)
+  /**
+   * @enum
+   * @readonly
+   */
 
   const compareCatAndCP = () => {
-    switch (currentPage) {
-      case 0:
-        setCategoryFillings('size')
-        break
-      case 1:
-        setCategoryFillings('bread')
-        break
-      case 2:
-        setCategoryFillings('vegetables')
-        break
-      case 3:
-        setCategoryFillings('sauces')
-        break
-      case 4:
-        setCategoryFillings('fillings')
-        break
-    }
+    setCategoryFillings(mapping[currentPage])
   }
-
-  const navbarItems = [
-    { text: 'Размер', counter: 0 },
-    { text: 'Хлеб', counter: 1 },
-    { text: 'Овощи', counter: 2 },
-    { text: 'Соусы', counter: 3 },
-    { text: 'Начинка', counter: 4 },
-    { text: 'Готово!', counter: 5 },
-  ]
-  const [arrayOfCards, setArrayOfCards] = useState([])
-  const { request } = useHttp()
 
   // useEffect(() => {
   //   setLoading(true)
@@ -95,10 +77,11 @@ function ModalCustom({ setModalCustomActive }) {
     try {
       const data = await request(`/fillings?category=${categoryFillings}`, 'GET')
       if (data !== undefined && data !== null) {
-        setArrayOfCards(data.fillingsToFront)
+        setArrayOfCards(data.fillings)
       }
     } catch (error) {}
   }
+
   return (
     <div className='modal-overlay' id='modal-overlay'>
       <div className='modal'>
@@ -140,7 +123,11 @@ function ModalCustom({ setModalCustomActive }) {
                   }}
                   id='btn-back'
                 >
-                  <img src={chevronLeft} className='fa-arrow fa-chevron-left'></img>
+                  <img
+                    src={chevronLeft}
+                    alt={'chevronLeft'}
+                    className='fa-arrow fa-chevron-left'
+                  ></img>
                   <span>Назад</span>
                 </button>
                 <button
@@ -151,7 +138,11 @@ function ModalCustom({ setModalCustomActive }) {
                   id='btn-next'
                 >
                   <span>Вперед</span>
-                  <img src={chevronRight} className='fa-arrow fa-angle-right'></img>
+                  <img
+                    src={chevronRight}
+                    alt={'chevronRight'}
+                    className='fa-arrow fa-angle-right'
+                  ></img>
                 </button>
               </div>
               <div className='modal__content' id='content-card-root'>
@@ -184,49 +175,12 @@ function ModalCustom({ setModalCustomActive }) {
             </div>
 
             {currentPage !== 5 ? (
-              <div className='modal__footer' id='modal-total-bottom-root'>
-                <div className='modal__total-price'>
-                  <span>Итого: {customProduct.price} руб.</span>
-                </div>
-              </div>
+              <ModalCustomFooterDefault customProduct={customProduct}></ModalCustomFooterDefault>
             ) : (
-              <div className='modal__footer' id='modal-total-bottom-root'>
-                <div className='modal__btn-block'>
-                  <div className='modal-block__text'>Количество</div>
-                  <div className='modal-block__btns-list'>
-                    <button
-                      className='btns-modal__btn'
-                      onClick={(e) =>
-                        customProduct.quantity !== 0 && setQuantity(customProduct.quantity - 1)
-                      }
-                    >
-                      <img src={minus} className='fa-solid fa-minus'></img>
-                    </button>
-                    <input
-                      type='number'
-                      className='btns-modal__btn modal-input'
-                      value={customProduct.quantity}
-                      onChange={(e) => {
-                        if (e.target.value > 0) setQuantity(e.target.value)
-                      }}
-                    />
-                    <button
-                      className='btns-modal__btn'
-                      onClick={(e) => {
-                        setQuantity(customProduct.quantity + 1)
-                      }}
-                    >
-                      <img src={plus} className='fa-solid fa-plus'></img>
-                    </button>
-                  </div>
-                </div>
-                <div className='modal__total-price'>
-                  <span>Итого: {customProduct.price} руб.</span>
-                  <div className='modal__btn-to-basket'>
-                    <button className='btn-to-basket__btn'>В корзину</button>
-                  </div>
-                </div>
-              </div>
+              <ModalCustomFooterTotal
+                customProduct={customProduct}
+                setQuantity={setQuantity}
+              ></ModalCustomFooterTotal>
             )}
           </div>
         </div>

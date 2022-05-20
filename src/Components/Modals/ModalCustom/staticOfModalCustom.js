@@ -7,3 +7,10 @@ export const navbarItems = [
   { text: 'Начинка', counter: 4 },
   { text: 'Готово!', counter: 5 },
 ]
+export const mapping = {
+  0: 'size',
+  1: 'bread',
+  2: 'vegetables',
+  3: 'sauces',
+  4: 'fillings',
+}
