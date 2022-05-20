@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 const PORT = 2323
 
+// .env, dotenv
+// port, db_name, db_user, db_password
+
 const mongoose = require('mongoose')
 const mongoDb = 'mongodb://127.0.0.1:27017/SubwayShop'
 

@@ -9,5 +9,5 @@ useSelector ??? what is it?
 mapping для сравнение категории филингс и каррентпайдж
 нужно стилизовать инпут
 поправить все в один стиль
-// classNames, styled-component
 write another useHttp for useHttpTimeouted
+// classNames, styled-component
