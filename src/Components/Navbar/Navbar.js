@@ -1,6 +1,6 @@
 import React from 'react'
 import Basket from './Basket'
-import Menu from './Menu'
+import Menu from './Menu/Menu'
 import Custom from './Buttons/Custom'
 import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'

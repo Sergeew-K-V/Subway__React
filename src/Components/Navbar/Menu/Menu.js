@@ -1,15 +1,7 @@
 import React from 'react'
+import { arrayOfCategory } from './staticOfMenu'
 
 function Menu({ category, setCategory }) {
-  const arrayOfCategory = [
-    { cat: 'sandwich', name: 'Сендвичи' },
-    { cat: 'pizza', name: 'Пицца' },
-    { cat: 'shaurma', name: 'Шаурма' },
-    { cat: 'burger', name: 'Бургеры' },
-    { cat: 'chicken', name: 'Курица & Картофель' },
-    { cat: 'salads', name: 'Тортилья & Салаты' },
-    { cat: 'drinks', name: 'Напитки & Десерты' },
-  ]
   return (
     <ul className='navbar__menu' id='menu__subRoot'>
       {arrayOfCategory.map((el) => {
