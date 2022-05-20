@@ -1,7 +1,7 @@
 const { json } = require('express')
 const { check, validationResult } = require('express-validator')
 const { default: mongoose } = require('mongoose')
-
+const { pathFormater } = require('../helpers')
 const Product = require('../models/Product')
 
 const CreateProductCheck = [
@@ -19,12 +19,13 @@ const CreateProduct = async (req, res, next) => {
         message: 'Wrong data on validation',
       })
     }
-    const { name, price, description, imageFile = req.file.path.slice(7), productsType } = req.body
-
+    const { name } = req.body
+    const imageFile = pathFormater(req.file.path)
+    // const imageFile = req.file.path
     // req.file.filename = req.file.originalname
     // req.file.path = 'uploadImage/' + req.file.filename
 
-    const existProduct = await Product.findOne({ name })
+    const existProduct = await Product.findOne({ name, productsType: req.query.category })
 
     if (existProduct) {
       return res.status(400).json({ message: `Product ${name} already exist` })
@@ -41,10 +42,11 @@ const GetAllProduct = async (req, res) => {
   try {
     // console.log('request', req.url)
     // console.log('request', req.query.category)
-    const products = await Product.find()
-    const productsToFront = products.filter((el) => el.productsType === req.query.category)
+    // { productsType: req.query.category }
+    // const productsToFront = products.filter((el) => el.productsType === req.query.category)
+    const products = await Product.find({ productsType: req.query.category })
 
-    return res.json({ productsToFront })
+    return res.json({ products })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }
