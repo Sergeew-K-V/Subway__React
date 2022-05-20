@@ -1,11 +1,13 @@
-multer || express-fileupload
-express - static
-store image path to DB
-
-selectedCategory - in state (+ useEffect)
 redux -> initState
 redux - action, for fetch products and set to state
 
-useSelector
+useSelector ??? what is it?
 
+отдельные папки со статикой прям рядом с компонентом
+сделать шаблон кнопки и потом в него как параметры передавать и вызывать - должен быть по итогу один каркас
+сделать отдельные компоненты для footer моделки кастом
+mapping для сравнение категории филингс и каррентпайдж
 нужно стилизовать инпут
+поправить все в один стиль
+// classNames, styled-component
+write another useHttp for useHttpTimeouted
