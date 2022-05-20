@@ -1,6 +1,7 @@
 const Filling = require('../models/Filling')
 const { check, validationResult } = require('express-validator')
 const { default: mongoose } = require('mongoose')
+const { pathFormater } = require('../helpers')
 
 const CreateFillingCheck = [
   check('name', 'Error on validation name').isString().trim(),
@@ -18,9 +19,10 @@ const CreateFilling = async (req, res, next) => {
       })
     }
 
-    const { name, price, imageFile = req.file.path.slice(7), fillingsType } = req.body
+    const { name } = req.body
+    const imageFile = pathFormater(req.file.path)
 
-    const existFilling = await Filling.findOne({ name })
+    const existFilling = await Filling.findOne({ name, fillingsType: req.query.category })
 
     if (existFilling) {
       return res.status(400).json({ message: `Filling ${name} already exist` })
@@ -34,9 +36,8 @@ const CreateFilling = async (req, res, next) => {
 }
 const GetAllFilling = async (req, res) => {
   try {
-    const fillings = await Filling.find()
-    const fillingsToFront = fillings.filter((el) => el.fillingsType === req.query.category)
-    return res.json({ fillingsToFront })
+    const fillings = await Filling.find({ fillingsType: req.query.category })
+    return res.json({ fillings })
   } catch (error) {}
 }
 module.exports = {
