@@ -21,9 +21,6 @@ const CreateProduct = async (req, res, next) => {
     }
     const { name } = req.body
     const imageFile = pathFormater(req.file.path)
-    // const imageFile = req.file.path
-    // req.file.filename = req.file.originalname
-    // req.file.path = 'uploadImage/' + req.file.filename
 
     const existProduct = await Product.findOne({ name, productsType: req.query.category })
 
@@ -40,10 +37,6 @@ const CreateProduct = async (req, res, next) => {
 
 const GetAllProduct = async (req, res) => {
   try {
-    // console.log('request', req.url)
-    // console.log('request', req.query.category)
-    // { productsType: req.query.category }
-    // const productsToFront = products.filter((el) => el.productsType === req.query.category)
     const products = await Product.find({ productsType: req.query.category })
 
     return res.json({ products })
