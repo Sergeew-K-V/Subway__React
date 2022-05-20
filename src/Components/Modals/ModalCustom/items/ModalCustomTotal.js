@@ -22,14 +22,12 @@ function ModalCustomTotal({ customProduct, setPrice, setQuantity }) {
             </div>
             <div className='middle__bread middle__item'>
               <span>
-                {' '}
                 <strong>Хлеб:</strong>
                 {customProduct.bread}
               </span>
             </div>
             <div className='middle__vegentables middle__item'>
               <span>
-                {' '}
                 <strong>Овощи:</strong>
                 {customProduct.vegetables}
               </span>
@@ -41,7 +39,6 @@ function ModalCustomTotal({ customProduct, setPrice, setQuantity }) {
             </div>
             <div className='middle__fillings middle__item'>
               <span>
-                {' '}
                 <strong>Начинка:</strong>
                 {customProduct.fillings}
               </span>

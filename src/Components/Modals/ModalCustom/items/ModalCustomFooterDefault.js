@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ModalCustomFooter_Default({ customProduct }) {
+export default function ModalCustomFooterDefault({ customProduct }) {
   return (
     <div className='modal__footer' id='modal-total-bottom-root'>
       <div className='modal__total-price'>

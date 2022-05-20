@@ -2,7 +2,7 @@ import React from 'react'
 import plus from '../../../../img/plus-solid.svg'
 import minus from '../../../../img/minus-solid.svg'
 
-export default function ModalCustomFooter_Total({ customProduct, setQuantity }) {
+export default function ModalCustomFooterTotal({ customProduct, setQuantity }) {
   return (
     <div className='modal__footer' id='modal-total-bottom-root'>
       <div className='modal__btn-block'>
@@ -12,7 +12,7 @@ export default function ModalCustomFooter_Total({ customProduct, setQuantity }) 
             className='btns-modal__btn'
             onClick={(e) => customProduct.quantity !== 0 && setQuantity(customProduct.quantity - 1)}
           >
-            <img src={minus} className='fa-solid fa-minus'></img>
+            <img src={minus} alt={'minus'} className='fa-solid fa-minus'></img>
           </button>
           <input
             type='number'
@@ -28,7 +28,7 @@ export default function ModalCustomFooter_Total({ customProduct, setQuantity }) 
               setQuantity(customProduct.quantity + 1)
             }}
           >
-            <img src={plus} className='fa-solid fa-plus'></img>
+            <img src={plus} alt={'plus'} className='fa-solid fa-plus'></img>
           </button>
         </div>
       </div>
