@@ -1,17 +1,14 @@
 import React from 'react'
+import BtnTemplate from './BtnTemplate'
 
 function Custom({ setModalCustomActive }) {
   return (
-    <div
-      className='navbar__btn-custom'
-      onClick={() => {
-        setModalCustomActive(true)
-      }}
-    >
-      <button id='btn-custom'>
-        <span>Собрать свой</span>
-      </button>
-    </div>
+    <BtnTemplate
+      styles={'navbar__btn-custom'}
+      funcForClick={setModalCustomActive}
+      id={'btn-custom'}
+      text={'Собрать свой'}
+    ></BtnTemplate>
   )
 }
 export default Custom

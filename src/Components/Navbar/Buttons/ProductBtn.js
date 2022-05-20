@@ -1,12 +1,14 @@
 import React from 'react'
+import BtnTemplate from './BtnTemplate'
 
 function ProductBtn({ setModalProductsActive }) {
   return (
-    <div className='navbar__btn-custom' onClick={() => setModalProductsActive(true)}>
-      <button id='btn-productBtn'>
-        <span>Добавить продукт</span>
-      </button>
-    </div>
+    <BtnTemplate
+      styles={'navbar__btn-custom'}
+      funcForClick={setModalProductsActive}
+      id={'btn-productBtn'}
+      text={'Добавить продукт'}
+    ></BtnTemplate>
   )
 }
 

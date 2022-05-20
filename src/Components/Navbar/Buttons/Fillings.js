@@ -1,17 +1,14 @@
 import React from 'react'
+import BtnTemplate from './BtnTemplate'
 
 function Fillings({ setModalFillingsActive }) {
   return (
-    <div
-      className='navbar__btn-custom'
-      onClick={() => {
-        setModalFillingsActive(true)
-      }}
-    >
-      <button id='btn-fillings'>
-        <span>Добавить начинку</span>
-      </button>
-    </div>
+    <BtnTemplate
+      styles={'navbar__btn-custom'}
+      funcForClick={setModalFillingsActive}
+      id={'btn-fillings'}
+      text={'Добавить начинку'}
+    ></BtnTemplate>
   )
 }
 
