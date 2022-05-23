@@ -7,6 +7,10 @@ import ModalCustomCard from './items/ModalCustomCard'
 import ModalCustomTotal from './items/ModalCustomTotal'
 import ModalCustomFooterDefault from './items/ModalCustomFooterDefault'
 import ModalCustomFooterTotal from './items/ModalCustomFooterTotal'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { incrementCurrentPage, decrementCurrentPage } from '../../../redux/currentPageState'
+
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
@@ -25,8 +29,13 @@ function ModalCustom({ setModalCustomActive }) {
 
   const { request } = useHttp()
 
+  const currentPage = useSelector((state) => {
+    return state.currentPageEntity.value
+  })
+  const dispath = useDispatch()
+
   const [arrayOfCards, setArrayOfCards] = useState([])
-  const [currentPage, setCurrentPage] = useState(0)
+  // const [currentPage, setCurrentPage] = useState(0)
   const [categoryFillings, setCategoryFillings] = useState('size')
   const [loading, setLoading] = useState(false)
 
@@ -102,7 +111,7 @@ function ModalCustom({ setModalCustomActive }) {
                       text={el.text}
                       counter={el.counter}
                       currentPage={currentPage}
-                      setCurrentPage={setCurrentPage}
+                      // setCurrentPage={setCurrentPage}
                     ></NavbarItem>
                   ))}
                 </ul>
@@ -119,7 +128,8 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 0 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    setCurrentPage(currentPage - 1)
+                    // setCurrentPage(currentPage - 1)
+                    dispath(decrementCurrentPage())
                   }}
                   id='btn-back'
                 >
@@ -133,7 +143,8 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 5 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    setCurrentPage(currentPage + 1)
+                    // setCurrentPage(currentPage + 1)
+                    dispath(incrementCurrentPage())
                   }}
                   id='btn-next'
                 >
