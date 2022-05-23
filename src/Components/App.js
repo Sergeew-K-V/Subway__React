@@ -19,11 +19,9 @@ function App() {
     <div className='app'>
       {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}
       {modalFillingsActive && (
-        // Route here need use
         <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
       )}
       {modalProductsActive && (
-        // Route here need use
         <ModalProducts
           setPosted={setPosted}
           posted={posted}
