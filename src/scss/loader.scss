@@ -4,12 +4,12 @@
   justify-content: center;
   margin: 150px auto;
 }
-.lds-dual-ring {
+.ldsDualRing {
   display: inline-block;
   width: 160px;
   height: 160px;
 }
-.lds-dual-ring:after {
+.ldsDualRing:after {
   content: ' ';
   display: block;
   width: 256px;
