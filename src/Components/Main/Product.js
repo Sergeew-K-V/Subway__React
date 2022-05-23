@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import config from '../../config.json'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  incrementQuantity,
+  decrementQuantity,
+  changeQuantityByInput,
+} from '../../redux/productState'
+
 import minus from '../../img/minus-solid.svg'
 import plus from '../../img/plus-solid.svg'
 import LOGO from '../../img/markets/subway_logo.png'
@@ -7,8 +14,14 @@ import '../../css/subway.css'
 
 function Product({ id, name, price, description, imageFile }) {
   const serverUrl = config.serverUrl
-  const [quantity, setQuantity] = useState(0)
+
+  const quantity = useSelector((state) => {
+    return state.productEntity.products
+  })
+  const dispath = useDispatch()
+  // const [quantity, setQuantity] = useState(quantityState)
   const [productObj, setProductObj] = useState({ id, name, price, quantity })
+  // console.log(`quantity of ${name}`, productObj.quantity)
 
   useEffect(() => {
     setProductObj({ ...productObj, quantity })
@@ -39,7 +52,8 @@ function Product({ id, name, price, description, imageFile }) {
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  if (quantity !== 0) setQuantity(quantity - 1)
+                  // if (quantity !== 0) setQuantity(quantity - 1)
+                  if (quantity !== 0) dispath(decrementQuantity(id))
                 }}
               >
                 <img src={minus} alt='minus' className='fa-solid fa-minus'></img>
@@ -48,13 +62,17 @@ function Product({ id, name, price, description, imageFile }) {
                 type='number'
                 className='btns-list__btn subway-input'
                 value={productObj.quantity}
-                onChange={(e) => setQuantity(Number(e.target.value))}
+                onChange={(e) => {
+                  // setQuantity(Number(e.target.value  ))
+                  dispath(changeQuantityByInput({ value: Number(e.target.value), id }))
+                }}
                 min={0}
               />
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  setQuantity(quantity + 1)
+                  // setQuantity(quantity + 1)
+                  dispath(incrementQuantity(id))
                 }}
               >
                 <img src={plus} alt='plus' className='fa-solid fa-plus'></img>

@@ -8,9 +8,6 @@ if (envData.error) {
   throw envData.error
 }
 
-// .env, dotenv
-// port, db_name, db_user, db_password
-
 const mongoose = require('mongoose')
 const mongoDb = `mongodb://127.0.0.1:27017/${process.env.DB_NAME}`
 
@@ -34,6 +31,7 @@ async function startServer() {
      * POST /fillings
      * PATCH /fillings/:id
      * DELETE /fillings/:id
+     *
      */
 
     app.listen(PORT, () => {
