@@ -23,8 +23,8 @@
   border-radius: 50%;
   border: 6px solid orange;
   border-color: orange transparent orange transparent;
-  -webkit-animation: lds-dual-ring 0.7s linear infinite;
-          animation: lds-dual-ring 0.7s linear infinite;
+  -webkit-animation: ldsDualRing 0.7s linear infinite;
+          animation: ldsDualRing 0.7s linear infinite;
 }
 
 @-webkit-keyframes modalLoader__lds-dual-ring {

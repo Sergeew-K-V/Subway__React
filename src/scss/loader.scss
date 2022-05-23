@@ -18,9 +18,9 @@
   border-radius: 50%;
   border: 8px solid orange;
   border-color: orange transparent orange transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  animation: ldsDualRing 1.2s linear infinite;
 }
-@keyframes lds-dual-ring {
+@keyframes ldsDualRing {
   0% {
     transform: rotate(0deg);
   }

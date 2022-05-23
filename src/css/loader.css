@@ -9,13 +9,13 @@
   margin: 150px auto;
 }
 
-.lds-dual-ring {
+.ldsDualRing {
   display: inline-block;
   width: 160px;
   height: 160px;
 }
 
-.lds-dual-ring:after {
+.ldsDualRing:after {
   content: ' ';
   display: block;
   width: 256px;
@@ -24,11 +24,11 @@
   border-radius: 50%;
   border: 8px solid orange;
   border-color: orange transparent orange transparent;
-  -webkit-animation: lds-dual-ring 1.2s linear infinite;
-          animation: lds-dual-ring 1.2s linear infinite;
+  -webkit-animation: ldsDualRing 1.2s linear infinite;
+          animation: ldsDualRing 1.2s linear infinite;
 }
 
-@-webkit-keyframes lds-dual-ring {
+@-webkit-keyframes ldsDualRing {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -39,7 +39,7 @@
   }
 }
 
-@keyframes lds-dual-ring {
+@keyframes ldsDualRing {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
