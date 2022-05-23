@@ -25,3 +25,4 @@ yarn-error.log*
 static
 
 config.json
+.env

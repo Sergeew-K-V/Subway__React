@@ -10,5 +10,7 @@ useSelector ??? what is it?
 нужно стилизовать инпут form
 write another useHttp for useHttpTimeouted
 
+// .env, dotenv+
+// port, db_name, db_user, db_password+
 // classNames, styled-component
 redux toolkit

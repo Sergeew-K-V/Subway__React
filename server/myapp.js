@@ -1,13 +1,18 @@
-const data = require('../data.json')
 const express = require('express')
+const dotenv = require('dotenv')
+const envData = dotenv.config({ path: 'server/.env' })
 const app = express()
-const PORT = 2323
+const PORT = process.env.PORT
+
+if (envData.error) {
+  throw envData.error
+}
 
 // .env, dotenv
 // port, db_name, db_user, db_password
 
 const mongoose = require('mongoose')
-const mongoDb = 'mongodb://127.0.0.1:27017/SubwayShop'
+const mongoDb = `mongodb://127.0.0.1:27017/${process.env.DB_NAME}`
 
 const fillingsRouter = require('./routers/fillingsRoute')
 const productsRouter = require('./routers/productsRoute')
