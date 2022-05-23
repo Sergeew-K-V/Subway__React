@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import config from '../../config.json'
 import minus from '../../img/minus-solid.svg'
 import plus from '../../img/plus-solid.svg'
 import LOGO from '../../img/markets/subway_logo.png'
 import '../../css/subway.css'
 
 function Product({ id, name, price, description, imageFile }) {
-  const serverUrl = 'http://localhost:2323/'
+  const serverUrl = config.serverUrl
   const [quantity, setQuantity] = useState(0)
   const [productObj, setProductObj] = useState({ id, name, price, quantity })
+
   useEffect(() => {
     setProductObj({ ...productObj, quantity })
   }, [quantity])
+
   return (
     <div className='subway__block' id={id}>
       <div className='subway__flex'>
@@ -39,7 +42,7 @@ function Product({ id, name, price, description, imageFile }) {
                   if (quantity !== 0) setQuantity(quantity - 1)
                 }}
               >
-                <img src={minus} className='fa-solid fa-minus'></img>
+                <img src={minus} alt='minus' className='fa-solid fa-minus'></img>
               </button>
               <input
                 type='number'
@@ -54,7 +57,7 @@ function Product({ id, name, price, description, imageFile }) {
                   setQuantity(quantity + 1)
                 }}
               >
-                <img src={plus} className='fa-solid fa-plus'></img>
+                <img src={plus} alt='plus' className='fa-solid fa-plus'></img>
               </button>
             </div>
           </div>
