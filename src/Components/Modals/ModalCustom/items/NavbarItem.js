@@ -20,7 +20,6 @@ export default function NavbarItem({ text, counter }) {
 
   return (
     <li
-      // className={currentPage === counter ? 'navbar__item selected' : 'navbar__item'}
       className={styles}
       onClick={(e) => {
         // setCurrentPage(Number(e.target.id.slice(-1)))
