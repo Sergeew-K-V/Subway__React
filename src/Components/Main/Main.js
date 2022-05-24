@@ -6,21 +6,20 @@ import { initProducts } from '../../redux/productState'
 import { useSelector, useDispatch } from 'react-redux'
 
 function Main({ category, posted }) {
-  const [mainData, setMainData] = useState([])
   const [loading, setLoading] = useState(false)
   const { request } = useHttp()
   const dispath = useDispatch()
   const productsState = useSelector((state) => {
     return state.productEntity.products
   })
+  // const [mainData, setMainData] = useState(productsState)
 
   async function getterHandler() {
     try {
       const data = await request(`/products?category=${category}`, 'GET')
       if (data !== undefined && data !== null) {
-        setMainData(data.products)
+        // setMainData(data.products)
         dispath(initProducts(data.products))
-        // console.log('productsState', productsState)
       }
     } catch (e) {}
   }
@@ -39,17 +38,10 @@ function Main({ category, posted }) {
         <div className='main__flex'>
           {loading ? (
             <Loader></Loader>
-          ) : mainData.length !== 0 ? (
-            mainData.map((el) => (
-              <Product
-                key={el._id}
-                id={el._id}
-                name={el.name}
-                price={el.price}
-                description={el.description}
-                imageFile={el.imageFile}
-              ></Product>
-            ))
+          ) : productsState.length !== 0 ? (
+            productsState
+              .filter((el) => el.productsType === category)
+              .map((el) => <Product product={el} key={el._id}></Product>)
           ) : (
             <div>
               <span>

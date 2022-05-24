@@ -5,56 +5,31 @@ export const productState = createSlice({
   initialState: {
     products: [],
     // quantity: 0,
-    //
     // selectedCategory: '',
     // basket: {},
   },
   reducers: {
     initProducts: (state, action) => {
+      const newProducts = [...state.products.map((item) => ({ ...item }))]
+      action.payload.forEach((element) => {
+        const includedElement = state.products.some((el) => element._id === el._id)
+        if (!includedElement) {
+          newProducts.push({ ...element, quantity: 0 })
+        }
+      })
+      state.products = newProducts
       console.log(state.products, 'state.products')
-      console.log(action.payload, 'action.payload')
-      return { ...state, products: [...state.products] }
-      // const newProducts = [...state.products.map((item) => ({ ...item }))]
-      // action.payload.forEach((element) => {
-      //   const includedElement = state.products.some((el) => element._id === el._id)
-      //   if (!includedElement) {
-      //     newProducts.push(element)
-      //   }
-      // })
-
-      // state.products = newProducts
-      // state.products = [...state.products, ...action.payload]
-      // state.products = action.payload
-      // action.payload.forEach((element) => {
-      //   const includedElement = state.products.some((el) => el._id === element._id)
-      //   if (!includedElement) {
-      //     state.products = [...state.products, element]
-      //   }
-      // })
-
-      // state.products = action.payload
-
-      // const newProducts = [...state.products.map((item) => ({ ...item }))]
-      // action.payload.forEach((element) => {
-      //   const includedElement = state.products.some((el) => element._id === el._id)
-
-      //   if (!includedElement) {
-      //     newProducts.push(element)
-      //   }
-      // })
-      // state.products = [...state.products]
     },
     incrementQuantity: (state, action) => {
-      // if
-      // state.products[quantity] += 1
-      console.log(action.payload, 'action.payload')
+      state.products.find((el) => (el._id === action.payload.id ? (el.quantity += 1) : false))
     },
     decrementQuantity: (state, action) => {
-      // state.quantity -= 1
-      console.log(action.payload, 'action.payload')
+      state.products.find((el) => (el._id === action.payload.id ? (el.quantity -= 1) : false))
     },
     changeQuantityByInput: (state, action) => {
-      // state.quantity = action.payload
+      state.products.find((el) =>
+        el._id === action.payload.id ? (el.quantity = action.payload.value) : false
+      )
     },
   },
 })

@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import minus from '../../img/minus-solid.svg'
+import plus from '../../img/plus-solid.svg'
+import LOGO from '../../img/markets/subway_logo.png'
+import '../../css/subway.css'
 import config from '../../config.json'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -7,53 +11,54 @@ import {
   changeQuantityByInput,
 } from '../../redux/productState'
 
-import minus from '../../img/minus-solid.svg'
-import plus from '../../img/plus-solid.svg'
-import LOGO from '../../img/markets/subway_logo.png'
-import '../../css/subway.css'
-
-function Product({ id, name, price, description, imageFile }) {
+function Product({ product }) {
   const serverUrl = config.serverUrl
-
-  const quantity = useSelector((state) => {
-    return state.productEntity.products
-  })
   const dispath = useDispatch()
-  // const [quantity, setQuantity] = useState(quantityState)
-  const [productObj, setProductObj] = useState({ id, name, price, quantity })
-  // console.log(`quantity of ${name}`, productObj.quantity)
+  // const quant = useSelector((state) => {
+  //   return state.productEntity.products.find((el) => el._id === id).quantity
+  // })
+  const [quantity, setQuantity] = useState(product.quantity)
+  const [productObj, setProductObj] = useState({
+    id: product._id,
+    name: product.name,
+    price: product.price,
+    quantity: quantity,
+  })
 
   useEffect(() => {
-    setProductObj({ ...productObj, quantity })
+    // setQuantity(quant)
+    // console.log(quantity, 'quantity')
+    // setProductObj({ ...productObj, quantity: quantity })
+    console.log(quantity, 'quantity')
+    console.log(productObj.quantity, 'Product quantity')
   }, [quantity])
 
   return (
-    <div className='subway__block' id={id}>
+    <div className='subway__block' id={product._id}>
       <div className='subway__flex'>
         <div className='flex__top'>
           <div className='subway__logo'>
             <img src={LOGO} alt='Logo market' />
           </div>
           <div className='subway__img-logo'>
-            <img src={serverUrl + imageFile} alt='Image of product' />
+            <img src={serverUrl + product.imageFile} alt='Image of product' />
           </div>
-          <div className='subway__title'>{name}</div>
+          <div className='subway__title'>{product.name}</div>
         </div>
         <div className='flex__middle'>
           <div className='subway__link'>
-            <a href='#'>{description}</a>
+            <a href='#'>{product.description}</a>
           </div>
         </div>
         <div className='flex__bottom'>
-          <div className='subway__price'>Цена: {price} руб.</div>
+          <div className='subway__price'>Цена: {product.price} руб.</div>
           <div className='subway__btn-block'>
             <div className='btn-block__text'>Количество</div>
             <div className='btn-block__btns-list'>
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  // if (quantity !== 0) setQuantity(quantity - 1)
-                  if (quantity !== 0) dispath(decrementQuantity(id))
+                  if (productObj.quantity !== 0) dispath(decrementQuantity({ id: product._id }))
                 }}
               >
                 <img src={minus} alt='minus' className='fa-solid fa-minus'></img>
@@ -63,16 +68,14 @@ function Product({ id, name, price, description, imageFile }) {
                 className='btns-list__btn subway-input'
                 value={productObj.quantity}
                 onChange={(e) => {
-                  // setQuantity(Number(e.target.value  ))
-                  dispath(changeQuantityByInput({ value: Number(e.target.value), id }))
+                  dispath(changeQuantityByInput({ value: Number(e.target.value), id: product._id }))
                 }}
                 min={0}
               />
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  // setQuantity(quantity + 1)
-                  dispath(incrementQuantity(id))
+                  dispath(incrementQuantity({ id: product._id }))
                 }}
               >
                 <img src={plus} alt='plus' className='fa-solid fa-plus'></img>

@@ -32,10 +32,10 @@ function ModalCustom({ setModalCustomActive }) {
   const currentPage = useSelector((state) => {
     return state.currentPageEntity.value
   })
+  // const [currentPage, setCurrentPage] = useState(0)
   const dispath = useDispatch()
 
   const [arrayOfCards, setArrayOfCards] = useState([])
-  // const [currentPage, setCurrentPage] = useState(0)
   const [categoryFillings, setCategoryFillings] = useState('size')
   const [loading, setLoading] = useState(false)
 
