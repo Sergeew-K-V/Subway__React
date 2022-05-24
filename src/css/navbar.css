@@ -269,7 +269,8 @@
 .fa-trash-can {
   position: relative;
   cursor: pointer;
-  margin-left: 5px;
+  width: 20px;
+  margin-left: 10px;
 }
 
 .fa-trash-can:hover {

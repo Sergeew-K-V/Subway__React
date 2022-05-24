@@ -7,7 +7,12 @@ export const basketState = createSlice({
   },
   reducers: {
     addProductToBasket(state, action) {
-      state.productsOfBasket.push(action.payload)
+      const existingProduct = state.productsOfBasket.find((el) => el._id === action.payload._id)
+      if (existingProduct) {
+        existingProduct.quantity = action.payload.quantity
+      } else {
+        state.productsOfBasket.push(action.payload)
+      }
       console.log('basket state', state.productsOfBasket)
       console.log(action.type)
     },

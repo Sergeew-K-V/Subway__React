@@ -1,7 +1,7 @@
 import React from 'react'
 import faTrash from '../../../img/trash-solid.svg'
 
-function basketProduct({ product }) {
+function BasketProduct({ product }) {
   return (
     <div className='body__item' id={product._id}>
       <span className='body__item_left'>{product.name}</span>
@@ -12,4 +12,4 @@ function basketProduct({ product }) {
   )
 }
 
-export default basketProduct
+export default BasketProduct

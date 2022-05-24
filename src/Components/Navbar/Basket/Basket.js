@@ -1,7 +1,7 @@
 import React from 'react'
 import basket from '../../../img/basket-shopping-solid.svg'
-import basketProduct from './basketProduct'
 import { useDispatch, useSelector } from 'react-redux'
+import BasketProduct from './BasketProduct'
 
 function Basket() {
   const basketState = useSelector((state) => {
@@ -32,7 +32,7 @@ function Basket() {
           <div className='body__bottom' id='array__wrapper'></div>
           {/* <!-- Тут будут появляться добавленнные товары --> */}
           {basketState !== 0 ? (
-            basketState.map((el) => <basketProduct product={el} key={el._id}></basketProduct>)
+            basketState.map((el) => <BasketProduct product={el} key={el._id}></BasketProduct>)
           ) : (
             <div>
               <span>
