@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import basket from '../../../img/basket-shopping-solid.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import BasketProduct from './BasketProduct'
+import { getTotalPrice } from '../../../redux/basketState'
 
 function Basket() {
+  const dispatch = useDispatch()
   const basketState = useSelector((state) => {
     return state.basketEntity.productsOfBasket
   })
+  const basketStatePrice = useSelector((state) => {
+    return state.basketEntity.price
+  })
+  useEffect(() => {
+    // dispatch(getTotalPrice())
+  }, [basketState])
 
   return (
     <div className='navbar__basket-block' id='basket-subRoot'>
@@ -43,7 +51,7 @@ function Basket() {
         </div>
         <div className='basket__footer' id='place-price'>
           <div className='basket__total'>
-            <span>Итого: руб.</span>
+            <span>Итого: {basketStatePrice} руб.</span>
           </div>
         </div>
         <div className='basket__btn'>

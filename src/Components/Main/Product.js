@@ -80,7 +80,6 @@ function Product({ product }) {
                 if (product.quantity !== 0) {
                   setQuantity(product.quantity)
                   dispath(addProductToBasket(product))
-                  alert(`Product was added to basket!`)
                 }
               }}
             >
