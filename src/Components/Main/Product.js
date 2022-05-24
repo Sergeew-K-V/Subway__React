@@ -14,24 +14,13 @@ import {
 function Product({ product }) {
   const serverUrl = config.serverUrl
   const dispath = useDispatch()
-  // const quant = useSelector((state) => {
-  //   return state.productEntity.products.find((el) => el._id === id).quantity
-  // })
   const [quantity, setQuantity] = useState(product.quantity)
   const [productObj, setProductObj] = useState({
     id: product._id,
     name: product.name,
     price: product.price,
-    quantity: quantity,
+    quantity: product.quantity,
   })
-
-  useEffect(() => {
-    // setQuantity(quant)
-    // console.log(quantity, 'quantity')
-    // setProductObj({ ...productObj, quantity: quantity })
-    console.log(quantity, 'quantity')
-    console.log(productObj.quantity, 'Product quantity')
-  }, [quantity])
 
   return (
     <div className='subway__block' id={product._id}>
@@ -58,7 +47,7 @@ function Product({ product }) {
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  if (productObj.quantity !== 0) dispath(decrementQuantity({ id: product._id }))
+                  if (product.quantity > 0) dispath(decrementQuantity({ id: product._id }))
                 }}
               >
                 <img src={minus} alt='minus' className='fa-solid fa-minus'></img>
@@ -66,7 +55,7 @@ function Product({ product }) {
               <input
                 type='number'
                 className='btns-list__btn subway-input'
-                value={productObj.quantity}
+                value={product.quantity}
                 onChange={(e) => {
                   dispath(changeQuantityByInput({ value: Number(e.target.value), id: product._id }))
                 }}

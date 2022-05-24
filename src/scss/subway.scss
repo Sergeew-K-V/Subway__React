@@ -128,12 +128,14 @@
 .fa-plus {
   color: black;
   width: 20px;
-  transform: translateY(15%);
+  margin-top: 2px;
+  // transform: translateY(50%);
 }
 .fa-minus {
   color: black;
   width: 20px;
-  transform: translateY(15%);
+  margin-top: 2px;
+  // transform: translateY(-10%);
 }
 .btns-list {
   &__btn {

@@ -121,15 +121,13 @@
 .fa-plus {
   color: black;
   width: 20px;
-  -webkit-transform: translateY(15%);
-          transform: translateY(15%);
+  margin-top: 2px;
 }
 
 .fa-minus {
   color: black;
   width: 20px;
-  -webkit-transform: translateY(15%);
-          transform: translateY(15%);
+  margin-top: 2px;
 }
 
 .btns-list__btn {
