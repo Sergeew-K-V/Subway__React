@@ -17,13 +17,6 @@ function Product({ product }) {
   const dispath = useDispatch()
   const [quantity, setQuantity] = useState(product.quantity)
 
-  // const [productObj, setProductObj] = useState({
-  //   id: product._id,
-  //   name: product.name,
-  //   price: product.price,
-  //   quantity: product.quantity,
-  // })
-
   return (
     <div className='subway__block' id={product._id}>
       <div className='subway__flex'>
