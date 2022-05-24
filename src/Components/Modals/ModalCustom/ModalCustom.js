@@ -9,7 +9,7 @@ import ModalCustomFooterDefault from './items/ModalCustomFooterDefault'
 import ModalCustomFooterTotal from './items/ModalCustomFooterTotal'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementCurrentPage, decrementCurrentPage } from '../../../redux/currentPageState'
+import { incrementCurrentPage, decrementCurrentPage } from '../../../redux/modalCustomState'
 
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
@@ -30,7 +30,7 @@ function ModalCustom({ setModalCustomActive }) {
   const { request } = useHttp()
 
   const currentPage = useSelector((state) => {
-    return state.currentPageEntity.value
+    return state
   })
   // const [currentPage, setCurrentPage] = useState(0)
   const dispath = useDispatch()

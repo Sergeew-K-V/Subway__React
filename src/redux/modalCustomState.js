@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const modalCustomState = createSlice({
-  name: 'modalCustomStateName',
+  name: 'currentPageCounterName',
   initialState: {
+    currentPage: 0,
     customProduct: {
       name: '',
       price: 0,
+      quantity: 0,
       size: '',
       sizeId: '',
       bread: '',
@@ -18,9 +20,20 @@ export const modalCustomState = createSlice({
       fillingsId: [],
     },
   },
-  reducers: {},
+  reducers: {
+    incrementCurrentPage: (state) => {
+      state.currentPage += 1
+    },
+    decrementCurrentPage: (state) => {
+      state.currentPage -= 1
+    },
+    changeCurrentPageByAmount: (state, action) => {
+      state.currentPage = action.payload
+    },
+  },
 })
 
-export const {} = modalCustomState.actions
+export const { incrementCurrentPage, decrementCurrentPage, changeCurrentPageByAmount } =
+  modalCustomState.actions
 
 export default modalCustomState.reducer

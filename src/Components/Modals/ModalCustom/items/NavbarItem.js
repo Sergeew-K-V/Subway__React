@@ -1,11 +1,7 @@
 import React from 'react'
 import ClassNames from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-  incrementCurrentPage,
-  decrementCurrentPage,
-  changeCurrentPageByAmount,
-} from '../../../../redux/currentPageState'
+import { changeCurrentPageByAmount } from '../../../../redux/modalCustomState'
 
 export default function NavbarItem({ text, counter }) {
   const currentPage = useSelector((state) => {
@@ -22,7 +18,6 @@ export default function NavbarItem({ text, counter }) {
     <li
       className={styles}
       onClick={(e) => {
-        // setCurrentPage(Number(e.target.id.slice(-1)))
         dispath(changeCurrentPageByAmount(Number(e.target.id.slice(-1))))
       }}
       id={'navbar-item-' + counter}
