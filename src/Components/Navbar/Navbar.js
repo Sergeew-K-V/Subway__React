@@ -1,5 +1,5 @@
 import React from 'react'
-import Basket from './Basket'
+import Basket from './Basket/Basket'
 import Menu from './Menu/Menu'
 import Custom from './Buttons/Custom'
 import Fillings from './Buttons/Fillings'

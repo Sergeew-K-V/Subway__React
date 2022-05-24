@@ -6,13 +6,8 @@ export const basketState = createSlice({
     productsOfBasket: [],
   },
   reducers: {
-    // initBasket(state, action) {
-
-    //   console.log(action.type)
-    // },
     addProductToBasket(state, action) {
       state.productsOfBasket.push(action.payload)
-      debugger
       console.log('basket state', state.productsOfBasket)
       console.log(action.type)
     },
