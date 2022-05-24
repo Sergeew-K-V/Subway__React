@@ -12,13 +12,11 @@ function Main({ category, posted }) {
   const productsState = useSelector((state) => {
     return state.productEntity.products
   })
-  // const [mainData, setMainData] = useState(productsState)
 
   async function getterHandler() {
     try {
       const data = await request(`/products?category=${category}`, 'GET')
       if (data !== undefined && data !== null) {
-        // setMainData(data.products)
         dispath(initProducts(data.products))
       }
     } catch (e) {}

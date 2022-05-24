@@ -4,9 +4,6 @@ export const productState = createSlice({
   name: 'productStateName',
   initialState: {
     products: [],
-    // quantity: 0,
-    // selectedCategory: '',
-    // basket: {},
   },
   reducers: {
     initProducts: (state, action) => {
@@ -22,16 +19,19 @@ export const productState = createSlice({
     },
     incrementQuantity: (state, action) => {
       state.products.find((el) => (el._id === action.payload.id ? (el.quantity += 1) : false))
+      console.log(state.products, 'state.products')
       console.log(action.type)
     },
     decrementQuantity: (state, action) => {
       state.products.find((el) => (el._id === action.payload.id ? (el.quantity -= 1) : false))
+      console.log(state.products, 'state.products')
       console.log(action.type)
     },
     changeQuantityByInput: (state, action) => {
       state.products.find((el) =>
         el._id === action.payload.id ? (el.quantity = action.payload.value) : false
       )
+      console.log(state.products, 'state.products')
       console.log(action.type)
     },
   },

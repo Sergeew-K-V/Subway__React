@@ -4,6 +4,7 @@ import plus from '../../img/plus-solid.svg'
 import LOGO from '../../img/markets/subway_logo.png'
 import '../../css/subway.css'
 import config from '../../config.json'
+import { addProductToBasket } from '../../redux/basketState'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   incrementQuantity,
@@ -15,12 +16,13 @@ function Product({ product }) {
   const serverUrl = config.serverUrl
   const dispath = useDispatch()
   const [quantity, setQuantity] = useState(product.quantity)
-  const [productObj, setProductObj] = useState({
-    id: product._id,
-    name: product.name,
-    price: product.price,
-    quantity: product.quantity,
-  })
+
+  // const [productObj, setProductObj] = useState({
+  //   id: product._id,
+  //   name: product.name,
+  //   price: product.price,
+  //   quantity: product.quantity,
+  // })
 
   return (
     <div className='subway__block' id={product._id}>
@@ -75,8 +77,11 @@ function Product({ product }) {
             <button
               className='btn-to-basket__btn'
               onClick={() => {
-                alert(`productObj`)
-                return productObj
+                if (product.quantity !== 0) {
+                  setQuantity(product.quantity)
+                  dispath(addProductToBasket(product))
+                  alert(`Product was added to basket!`)
+                }
               }}
             >
               В корзину
