@@ -7,6 +7,6 @@ export default configureStore({
   reducer: {
     productEntity: productStateReducer,
     basketEntity: basketStateReducer,
-    modalEntity: modalCustomStateReducer,
+    modalCustomEntity: modalCustomStateReducer,
   },
 })

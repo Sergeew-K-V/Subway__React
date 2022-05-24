@@ -16,6 +16,12 @@ import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'
 
 function ModalCustom({ setModalCustomActive }) {
+  const currentPage = useSelector((state) => {
+    return state.modalCustomEntity.currentPage
+  })
+  const customProduct = useSelector((state) => {
+    return state.modalCustomEntity.customProduct
+  })
   const id = Date.now().toString().slice(7, 14)
   const [name, setName] = useState(`Custom-product-${id}`)
   const [price, setPrice] = useState(0)
@@ -29,27 +35,23 @@ function ModalCustom({ setModalCustomActive }) {
 
   const { request } = useHttp()
 
-  const currentPage = useSelector((state) => {
-    return state
-  })
-  // const [currentPage, setCurrentPage] = useState(0)
   const dispath = useDispatch()
 
   const [arrayOfCards, setArrayOfCards] = useState([])
   const [categoryFillings, setCategoryFillings] = useState('size')
   const [loading, setLoading] = useState(false)
 
-  const [customProduct, setCustomProduct] = useState({
-    id,
-    name,
-    price,
-    quantity,
-    size,
-    bread,
-    sauce,
-    vegetables,
-    fillings,
-  })
+  // const [customProduct, setCustomProduct] = useState({
+  //   id,
+  //   name,
+  //   price,
+  //   quantity,
+  //   size,
+  //   bread,
+  //   sauce,
+  //   vegetables,
+  //   fillings,
+  // })
 
   /**
    * @enum
@@ -59,14 +61,6 @@ function ModalCustom({ setModalCustomActive }) {
   const compareCatAndCP = () => {
     setCategoryFillings(mapping[currentPage])
   }
-
-  // useEffect(() => {
-  //   setLoading(true)
-  //   setTimeout(() => {
-  //     getCards()
-  //     setLoading(false)
-  //   }, 1000)
-  // }, [])
 
   useEffect(() => {
     compareCatAndCP()
@@ -111,7 +105,6 @@ function ModalCustom({ setModalCustomActive }) {
                       text={el.text}
                       counter={el.counter}
                       currentPage={currentPage}
-                      // setCurrentPage={setCurrentPage}
                     ></NavbarItem>
                   ))}
                 </ul>
@@ -128,7 +121,6 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 0 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    // setCurrentPage(currentPage - 1)
                     dispath(decrementCurrentPage())
                   }}
                   id='btn-back'
@@ -143,7 +135,6 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 5 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    // setCurrentPage(currentPage + 1)
                     dispath(incrementCurrentPage())
                   }}
                   id='btn-next'

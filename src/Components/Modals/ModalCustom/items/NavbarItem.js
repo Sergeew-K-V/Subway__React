@@ -5,7 +5,7 @@ import { changeCurrentPageByAmount } from '../../../../redux/modalCustomState'
 
 export default function NavbarItem({ text, counter }) {
   const currentPage = useSelector((state) => {
-    return state.currentPageEntity.value
+    return state.modalCustomEntity.currentPage
   })
   const dispath = useDispatch()
 
