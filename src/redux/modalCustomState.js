@@ -58,8 +58,6 @@ export const modalCustomState = createSlice({
         console.log('getTotalPriceOnSending of modal')
       }
     },
-    // priceChecking: (state,action)=>{
-    // }
     selectCard: (state, action) => {
       console.log('id card ', action.payload._id)
       const currentCard = state.arrayOfCards.find((el) => el._id === action.payload._id)
