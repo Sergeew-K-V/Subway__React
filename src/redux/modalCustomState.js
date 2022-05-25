@@ -4,8 +4,10 @@ export const modalCustomState = createSlice({
   name: 'currentPageCounterName',
   initialState: {
     currentPage: 0,
+    arrayOfCards: [],
     customProduct: {
-      name: '',
+      id: 'customProduct-' + `${Date.now()}`,
+      name: 'Product-' + `${Date.now()}`.slice(7, 14),
       price: 0,
       quantity: 0,
       size: '',
@@ -21,6 +23,17 @@ export const modalCustomState = createSlice({
     },
   },
   reducers: {
+    initCards: (state, action) => {
+      const newCards = [...state.arrayOfCards.map((item) => ({ ...item }))]
+      action.payload.forEach((element) => {
+        const includedElement = state.arrayOfCards.some((el) => element._id === el._id)
+        if (!includedElement) {
+          newCards.push({ ...element })
+          debugger
+        }
+      })
+      state.arrayOfCards = newCards
+    },
     incrementCurrentPage: (state) => {
       state.currentPage += 1
     },
@@ -33,7 +46,7 @@ export const modalCustomState = createSlice({
   },
 })
 
-export const { incrementCurrentPage, decrementCurrentPage, changeCurrentPageByAmount } =
+export const { incrementCurrentPage, decrementCurrentPage, changeCurrentPageByAmount, initCards } =
   modalCustomState.actions
 
 export default modalCustomState.reducer

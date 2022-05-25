@@ -15,7 +15,7 @@ import {
 function Product({ product }) {
   const serverUrl = config.serverUrl
   const dispath = useDispatch()
-  const [quantity, setQuantity] = useState(product.quantity)
+  // const [quantity, setQuantity] = useState(product.quantity)
 
   return (
     <div className='subway__block' id={product._id}>
@@ -71,7 +71,7 @@ function Product({ product }) {
               className='btn-to-basket__btn'
               onClick={() => {
                 if (product.quantity !== 0) {
-                  setQuantity(product.quantity)
+                  // setQuantity(product.quantity)
                   dispath(addProductToBasket(product))
                 }
               }}

@@ -1,7 +1,7 @@
 import React from 'react'
 import resultProduct from '../../../../img/result_sandwich.jpg'
 
-function ModalCustomTotal({ customProduct, setPrice, setQuantity }) {
+function ModalCustomTotal({ customProduct }) {
   return (
     <div className='modal__content-total' id='modal-summary'>
       <div className='content-total__block'>
@@ -17,30 +17,32 @@ function ModalCustomTotal({ customProduct, setPrice, setQuantity }) {
           <div className='right__middle'>
             <div className='middle__size middle__item'>
               <span>
-                <strong>Размер:</strong> {customProduct.size}
+                <strong>Размер:</strong>{' '}
+                {customProduct.size === '' ? ' Размер не был выбран!' : customProduct.size}
               </span>
             </div>
             <div className='middle__bread middle__item'>
               <span>
                 <strong>Хлеб:</strong>
-                {customProduct.bread}
+                {customProduct.bread === '' ? ' Хлеб не был выбран!' : customProduct.size}
               </span>
             </div>
             <div className='middle__vegentables middle__item'>
               <span>
                 <strong>Овощи:</strong>
-                {customProduct.vegetables}
+                {customProduct.vegetables.length === 0 ? ' Без овощей!' : customProduct.vegetables}
               </span>
             </div>
             <div className='middle__sauces middle__item'>
               <span>
-                <strong>Соусы:</strong> {customProduct.sauces}
+                <strong>Соусы:</strong>
+                {customProduct.sauces.length === 0 ? ' Без соусов!' : customProduct.sauces}
               </span>
             </div>
             <div className='middle__fillings middle__item'>
               <span>
                 <strong>Начинка:</strong>
-                {customProduct.fillings}
+                {customProduct.fillings.length === 0 ? ' Без начинки!' : customProduct.fillings}
               </span>
             </div>
           </div>

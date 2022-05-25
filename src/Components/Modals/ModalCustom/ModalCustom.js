@@ -9,7 +9,11 @@ import ModalCustomFooterDefault from './items/ModalCustomFooterDefault'
 import ModalCustomFooterTotal from './items/ModalCustomFooterTotal'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementCurrentPage, decrementCurrentPage } from '../../../redux/modalCustomState'
+import {
+  incrementCurrentPage,
+  decrementCurrentPage,
+  initCards,
+} from '../../../redux/modalCustomState'
 
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
@@ -22,36 +26,16 @@ function ModalCustom({ setModalCustomActive }) {
   const customProduct = useSelector((state) => {
     return state.modalCustomEntity.customProduct
   })
-  const id = Date.now().toString().slice(7, 14)
-  const [name, setName] = useState(`Custom-product-${id}`)
-  const [price, setPrice] = useState(0)
-  const [quantity, setQuantity] = useState(0)
 
-  const [size, setSize] = useState([])
-  const [bread, setBread] = useState([])
-  const [vegetables, setVegetables] = useState([])
-  const [sauce, setSauces] = useState([])
-  const [fillings, setFillings] = useState([])
-
+  const arrayOfCards = useSelector((state) => {
+    return state.modalCustomEntity.arrayOfCards
+  })
   const { request } = useHttp()
-
   const dispath = useDispatch()
 
-  const [arrayOfCards, setArrayOfCards] = useState([])
+  // const [arrayOfCards, setArrayOfCards] = useState([])
   const [categoryFillings, setCategoryFillings] = useState('size')
   const [loading, setLoading] = useState(false)
-
-  // const [customProduct, setCustomProduct] = useState({
-  //   id,
-  //   name,
-  //   price,
-  //   quantity,
-  //   size,
-  //   bread,
-  //   sauce,
-  //   vegetables,
-  //   fillings,
-  // })
 
   /**
    * @enum
@@ -72,7 +56,7 @@ function ModalCustom({ setModalCustomActive }) {
       setTimeout(() => {
         getCards()
         setLoading(false)
-      }, 1000)
+      }, 500)
     }
   }, [categoryFillings])
 
@@ -80,7 +64,8 @@ function ModalCustom({ setModalCustomActive }) {
     try {
       const data = await request(`/fillings?category=${categoryFillings}`, 'GET')
       if (data !== undefined && data !== null) {
-        setArrayOfCards(data.fillings)
+        // setArrayOfCards(data.fillings)
+        dispath(initCards(data.fillings))
       }
     } catch (error) {}
   }
@@ -157,15 +142,17 @@ function ModalCustom({ setModalCustomActive }) {
                 ) : loading ? (
                   <ModalLoader></ModalLoader>
                 ) : arrayOfCards.length !== 0 ? (
-                  arrayOfCards.map((el) => (
-                    <ModalCustomCard
-                      key={el._id}
-                      id={el._id}
-                      name={el.name}
-                      price={el.price}
-                      imageFile={el.imageFile}
-                    ></ModalCustomCard>
-                  ))
+                  arrayOfCards
+                    .filter((el) => el.fillingsType === categoryFillings)
+                    .map((el) => (
+                      <ModalCustomCard
+                        key={el._id}
+                        id={el._id}
+                        name={el.name}
+                        price={el.price}
+                        imageFile={el.imageFile}
+                      ></ModalCustomCard>
+                    ))
                 ) : (
                   <div>
                     <span>
@@ -181,7 +168,7 @@ function ModalCustom({ setModalCustomActive }) {
             ) : (
               <ModalCustomFooterTotal
                 customProduct={customProduct}
-                setQuantity={setQuantity}
+                // setQuantity={setQuantity}
               ></ModalCustomFooterTotal>
             )}
           </div>
