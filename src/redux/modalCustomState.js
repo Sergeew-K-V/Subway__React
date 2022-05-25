@@ -51,7 +51,7 @@ export const modalCustomState = createSlice({
     changeCurrentPageByAmount: (state, action) => {
       state.currentPage = action.payload
     },
-    getTotalPriceOnChangeQuantity: (state) => {
+    getTotalPriceOnSending: (state) => {
       if (state.customProduct.quantity !== 0) {
         const calculatedPrice = state.customProduct.price * state.customProduct.quantity
         state.customProduct.price = calculatedPrice
@@ -69,7 +69,7 @@ export const {
   incrementQuantity,
   decrementQuantity,
   changeQuantityByAmount,
-  getTotalPriceOnChangeQuantity,
+  getTotalPriceOnSending,
 } = modalCustomState.actions
 
 export default modalCustomState.reducer

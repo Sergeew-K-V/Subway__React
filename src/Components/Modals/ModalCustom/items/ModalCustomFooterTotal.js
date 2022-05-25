@@ -6,7 +6,7 @@ import {
   incrementQuantity,
   decrementQuantity,
   changeQuantityByAmount,
-  getTotalPriceOnChangeQuantity,
+  getTotalPriceOnSending,
 } from '../../../../redux/modalCustomState'
 
 export default function ModalCustomFooterTotal({ customProduct }) {
@@ -52,7 +52,7 @@ export default function ModalCustomFooterTotal({ customProduct }) {
           <button
             className='btn-to-basket__btn'
             onClick={() => {
-              dispatch(getTotalPriceOnChangeQuantity())
+              dispatch(getTotalPriceOnSending())
             }}
           >
             В корзину
