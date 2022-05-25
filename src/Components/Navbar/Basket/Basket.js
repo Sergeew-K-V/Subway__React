@@ -12,9 +12,9 @@ function Basket() {
   const basketStatePrice = useSelector((state) => {
     return state.basketEntity.price
   })
-  useEffect(() => {
-    // dispatch(getTotalPrice())
-  }, [basketState])
+  // useEffect(() => {
+
+  // }, [basketState])
 
   return (
     <div className='navbar__basket-block' id='basket-subRoot'>

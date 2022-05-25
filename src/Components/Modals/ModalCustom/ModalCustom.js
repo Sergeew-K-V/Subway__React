@@ -14,7 +14,6 @@ import {
   decrementCurrentPage,
   initCards,
 } from '../../../redux/modalCustomState'
-
 import chevronLeft from '../../../img/chevron-left-solid.svg'
 import chevronRight from '../../../img/chevron-right-solid.svg'
 import '../../../css/modal.css'

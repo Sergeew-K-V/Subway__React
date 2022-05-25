@@ -8,6 +8,7 @@ import {
   changeQuantityByAmount,
   getTotalPriceOnSending,
 } from '../../../../redux/modalCustomState'
+import { addProductToBasket } from '../../../../redux/basketState'
 
 export default function ModalCustomFooterTotal({ customProduct }) {
   const dispatch = useDispatch()
@@ -52,7 +53,8 @@ export default function ModalCustomFooterTotal({ customProduct }) {
           <button
             className='btn-to-basket__btn'
             onClick={() => {
-              dispatch(getTotalPriceOnSending())
+              // dispatch(getTotalPriceOnSending())
+              dispatch(addProductToBasket(customProduct))
             }}
           >
             В корзину

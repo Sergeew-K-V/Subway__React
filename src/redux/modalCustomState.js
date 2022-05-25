@@ -6,7 +6,7 @@ export const modalCustomState = createSlice({
     currentPage: 0,
     arrayOfCards: [],
     customProduct: {
-      id: 'customProduct-' + `${Date.now()}`,
+      _id: 'customProduct-' + `${Date.now()}`,
       name: 'Product-' + `${Date.now()}`.slice(7, 14),
       price: 0,
       quantity: 0,
