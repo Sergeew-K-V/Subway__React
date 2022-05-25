@@ -18,31 +18,45 @@ function ModalCustomTotal({ customProduct }) {
             <div className='middle__size middle__item'>
               <span>
                 <strong>Размер:</strong>{' '}
-                {customProduct.size === '' ? ' Размер не был выбран!' : customProduct.size}
+                {customProduct.size === '' ? (
+                  ' Размер не был выбран!'
+                ) : (
+                  <span> {customProduct.size}</span>
+                )}
               </span>
             </div>
             <div className='middle__bread middle__item'>
               <span>
                 <strong>Хлеб:</strong>
-                {customProduct.bread === '' ? ' Хлеб не был выбран!' : customProduct.size}
+                {customProduct.bread === '' ? (
+                  ' Хлеб не был выбран!'
+                ) : (
+                  <span> {customProduct.bread}</span>
+                )}
               </span>
             </div>
             <div className='middle__vegentables middle__item'>
               <span>
                 <strong>Овощи:</strong>
-                {customProduct.vegetables.length === 0 ? ' Без овощей!' : customProduct.vegetables}
+                {customProduct.vegetables.length === 0
+                  ? ' Без овощей!'
+                  : customProduct.vegetables.map((el) => <span key={el._id}> {el.name}</span>)}
               </span>
             </div>
             <div className='middle__sauces middle__item'>
               <span>
                 <strong>Соусы:</strong>
-                {customProduct.sauces.length === 0 ? ' Без соусов!' : customProduct.sauces}
+                {customProduct.sauces.length === 0
+                  ? ' Без соусов!'
+                  : customProduct.sauces.map((el) => <span key={el._id}> {el.name}</span>)}
               </span>
             </div>
             <div className='middle__fillings middle__item'>
               <span>
                 <strong>Начинка:</strong>
-                {customProduct.fillings.length === 0 ? ' Без начинки!' : customProduct.fillings}
+                {customProduct.fillings.length === 0
+                  ? ' Без начинки!'
+                  : customProduct.fillings.map((el) => <span key={el._id}> {el.name}</span>)}
               </span>
             </div>
           </div>
