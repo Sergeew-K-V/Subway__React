@@ -31,7 +31,7 @@ function ModalCustom({ setModalCustomActive }) {
     return state.modalCustomEntity.arrayOfCards
   })
   const { request } = useHttp()
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
 
   // const [arrayOfCards, setArrayOfCards] = useState([])
   const [categoryFillings, setCategoryFillings] = useState('size')
@@ -65,7 +65,7 @@ function ModalCustom({ setModalCustomActive }) {
       const data = await request(`/fillings?category=${categoryFillings}`, 'GET')
       if (data !== undefined && data !== null) {
         // setArrayOfCards(data.fillings)
-        dispath(initCards(data.fillings))
+        dispatch(initCards(data.fillings))
       }
     } catch (error) {}
   }
@@ -106,7 +106,7 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 0 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    dispath(decrementCurrentPage())
+                    dispatch(decrementCurrentPage())
                   }}
                   id='btn-back'
                 >
@@ -120,7 +120,7 @@ function ModalCustom({ setModalCustomActive }) {
                 <button
                   className={currentPage === 5 ? 'modal__btn hidden' : 'modal__btn '}
                   onClick={(e) => {
-                    dispath(incrementCurrentPage())
+                    dispatch(incrementCurrentPage())
                   }}
                   id='btn-next'
                 >

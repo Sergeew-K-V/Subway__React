@@ -8,7 +8,7 @@ export const modalCustomState = createSlice({
     customProduct: {
       id: 'customProduct-' + `${Date.now()}`,
       name: 'Product-' + `${Date.now()}`.slice(7, 14),
-      price: 0,
+      price: 10,
       quantity: 0,
       size: '',
       sizeId: '',
@@ -28,11 +28,19 @@ export const modalCustomState = createSlice({
       action.payload.forEach((element) => {
         const includedElement = state.arrayOfCards.some((el) => element._id === el._id)
         if (!includedElement) {
-          newCards.push({ ...element })
-          debugger
+          newCards.push({ ...element, selected: false })
         }
       })
       state.arrayOfCards = newCards
+    },
+    incrementQuantity: (state) => {
+      state.customProduct.quantity += 1
+    },
+    decrementQuantity: (state) => {
+      state.customProduct.quantity -= 1
+    },
+    changeQuantityByAmount: (state, action) => {
+      state.customProduct.quantity = action.payload
     },
     incrementCurrentPage: (state) => {
       state.currentPage += 1
@@ -43,10 +51,25 @@ export const modalCustomState = createSlice({
     changeCurrentPageByAmount: (state, action) => {
       state.currentPage = action.payload
     },
+    getTotalPriceOnChangeQuantity: (state) => {
+      if (state.customProduct.quantity !== 0) {
+        const calculatedPrice = state.customProduct.price * state.customProduct.quantity
+        state.customProduct.price = calculatedPrice
+        console.log('getTotalPrice of modal')
+      }
+    },
   },
 })
 
-export const { incrementCurrentPage, decrementCurrentPage, changeCurrentPageByAmount, initCards } =
-  modalCustomState.actions
+export const {
+  initCards,
+  incrementCurrentPage,
+  decrementCurrentPage,
+  changeCurrentPageByAmount,
+  incrementQuantity,
+  decrementQuantity,
+  changeQuantityByAmount,
+  getTotalPriceOnChangeQuantity,
+} = modalCustomState.actions
 
 export default modalCustomState.reducer

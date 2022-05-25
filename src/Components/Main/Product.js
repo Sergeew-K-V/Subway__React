@@ -14,7 +14,7 @@ import {
 
 function Product({ product }) {
   const serverUrl = config.serverUrl
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   // const [quantity, setQuantity] = useState(product.quantity)
 
   return (
@@ -42,7 +42,7 @@ function Product({ product }) {
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  if (product.quantity > 0) dispath(decrementQuantity({ id: product._id }))
+                  if (product.quantity > 0) dispatch(decrementQuantity({ id: product._id }))
                 }}
               >
                 <img src={minus} alt='minus' className='fa-solid fa-minus'></img>
@@ -52,14 +52,16 @@ function Product({ product }) {
                 className='btns-list__btn subway-input'
                 value={product.quantity}
                 onChange={(e) => {
-                  dispath(changeQuantityByInput({ value: Number(e.target.value), id: product._id }))
+                  dispatch(
+                    changeQuantityByInput({ value: Number(e.target.value), id: product._id })
+                  )
                 }}
                 min={0}
               />
               <button
                 className='btns-list__btn'
                 onClick={() => {
-                  dispath(incrementQuantity({ id: product._id }))
+                  dispatch(incrementQuantity({ id: product._id }))
                 }}
               >
                 <img src={plus} alt='plus' className='fa-solid fa-plus'></img>
@@ -72,7 +74,7 @@ function Product({ product }) {
               onClick={() => {
                 if (product.quantity !== 0) {
                   // setQuantity(product.quantity)
-                  dispath(addProductToBasket(product))
+                  dispatch(addProductToBasket(product))
                 }
               }}
             >

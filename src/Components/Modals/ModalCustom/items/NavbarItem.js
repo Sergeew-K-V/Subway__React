@@ -7,7 +7,7 @@ export default function NavbarItem({ text, counter }) {
   const currentPage = useSelector((state) => {
     return state.modalCustomEntity.currentPage
   })
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
 
   const styles = ClassNames({
     navbar__item: true,
@@ -18,7 +18,7 @@ export default function NavbarItem({ text, counter }) {
     <li
       className={styles}
       onClick={(e) => {
-        dispath(changeCurrentPageByAmount(Number(e.target.id.slice(-1))))
+        dispatch(changeCurrentPageByAmount(Number(e.target.id.slice(-1))))
       }}
       id={'navbar-item-' + counter}
     >

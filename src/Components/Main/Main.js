@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 function Main({ category, posted }) {
   const [loading, setLoading] = useState(false)
   const { request } = useHttp()
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   const productsState = useSelector((state) => {
     return state.productEntity.products
   })
@@ -17,7 +17,7 @@ function Main({ category, posted }) {
     try {
       const data = await request(`/products?category=${category}`, 'GET')
       if (data !== undefined && data !== null) {
-        dispath(initProducts(data.products))
+        dispatch(initProducts(data.products))
       }
     } catch (e) {}
   }
