@@ -26,18 +26,9 @@ export const basketState = createSlice({
       state.price -= removingItem.price * removingItem.quantity
       console.log(action.type)
     },
-    // getTotalPrice(state) {
-    //   if (state.productsOfBasket.length !== 0) {
-    //     const total = state.productsOfBasket.reduce((total, el) => {
-    //       total += el.price * el.quantity
-    //     })
-    //     state.price = total
-    //     console.log('getTotalPrice of Basket')
-    //   }
-    // },
   },
 })
 
-export const { addProductToBasket, deleteProductFromBasket, getTotalPrice } = basketState.actions
+export const { addProductToBasket, deleteProductFromBasket } = basketState.actions
 
 export default basketState.reducer

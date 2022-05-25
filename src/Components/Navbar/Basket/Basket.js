@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import basket from '../../../img/basket-shopping-solid.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import BasketProduct from './BasketProduct'
-import { getTotalPrice } from '../../../redux/basketState'
 
 function Basket() {
   const dispatch = useDispatch()
@@ -12,9 +11,6 @@ function Basket() {
   const basketStatePrice = useSelector((state) => {
     return state.basketEntity.price
   })
-  // useEffect(() => {
-
-  // }, [basketState])
 
   return (
     <div className='navbar__basket-block' id='basket-subRoot'>

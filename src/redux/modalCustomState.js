@@ -55,7 +55,7 @@ export const modalCustomState = createSlice({
       if (state.customProduct.quantity !== 0) {
         const calculatedPrice = state.customProduct.price * state.customProduct.quantity
         state.customProduct.price = calculatedPrice
-        console.log('getTotalPrice of modal')
+        console.log('getTotalPriceOnSending of modal')
       }
     },
     // priceChecking: (state,action)=>{
