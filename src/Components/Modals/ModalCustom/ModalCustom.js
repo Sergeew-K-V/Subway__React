@@ -147,10 +147,9 @@ function ModalCustom({ setModalCustomActive }) {
                     .map((el) => (
                       <ModalCustomCard
                         key={el._id}
-                        id={el._id}
-                        name={el.name}
-                        price={el.price}
-                        imageFile={el.imageFile}
+                        card={el}
+                        category={categoryFillings}
+                        customProduct={customProduct}
                       ></ModalCustomCard>
                     ))
                 ) : (

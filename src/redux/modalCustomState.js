@@ -58,6 +58,20 @@ export const modalCustomState = createSlice({
         console.log('getTotalPrice of modal')
       }
     },
+    selectCard: (state, action) => {
+      switch (action.payload.fillingsType) {
+        case 'size':
+          break
+        case 'bread':
+          break
+        case 'vegetables':
+          break
+        case 'sauces':
+          break
+        case 'fillings':
+          break
+      }
+    },
   },
 })
 
@@ -70,6 +84,7 @@ export const {
   decrementQuantity,
   changeQuantityByAmount,
   getTotalPriceOnSending,
+  selectCard,
 } = modalCustomState.actions
 
 export default modalCustomState.reducer
