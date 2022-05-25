@@ -8,7 +8,7 @@ export const modalCustomState = createSlice({
     customProduct: {
       id: 'customProduct-' + `${Date.now()}`,
       name: 'Product-' + `${Date.now()}`.slice(7, 14),
-      price: 10,
+      price: 0,
       quantity: 0,
       size: '',
       sizeId: '',
@@ -58,73 +58,85 @@ export const modalCustomState = createSlice({
         console.log('getTotalPrice of modal')
       }
     },
+    // priceChecking: (state,action)=>{
+    // }
     selectCard: (state, action) => {
       console.log('id card ', action.payload._id)
       const currentCard = state.arrayOfCards.find((el) => el._id === action.payload._id)
       currentCard.selected = !currentCard.selected
-      switch (action.payload.fillingsType) {
+      switch (currentCard.fillingsType) {
         case 'size':
           if (currentCard.selected) {
-            state.customProduct.sizeId = action.payload._id
-            state.customProduct.size = action.payload.name
+            state.customProduct.sizeId = currentCard._id
+            state.customProduct.size = currentCard.name
+            state.customProduct.price += currentCard.price
           } else {
             state.customProduct.sizeId = ''
             state.customProduct.size = ''
+            state.customProduct.price -= currentCard.price
           }
           break
         case 'bread':
           if (currentCard.selected) {
-            state.customProduct.breadId = action.payload._id
-            state.customProduct.bread = action.payload.name
+            state.customProduct.breadId = currentCard._id
+            state.customProduct.bread = currentCard.name
+            state.customProduct.price += currentCard.price
           } else {
             state.customProduct.breadId = ''
             state.customProduct.bread = ''
+            state.customProduct.price -= currentCard.price
           }
           break
         case 'vegetables':
           if (currentCard.selected) {
-            state.customProduct.vegetablesId.push(action.payload._id)
-            state.customProduct.vegetables.push(action.payload)
+            state.customProduct.vegetablesId.push(currentCard._id)
+            state.customProduct.vegetables.push(currentCard)
+            state.customProduct.price += currentCard.price
           } else {
             state.customProduct.vegetables = state.customProduct.vegetablesId.filter(
-              (el) => el !== action.payload._id
+              (el) => el !== currentCard._id
             )
             state.customProduct.vegetables = state.customProduct.vegetables.filter(
-              (el) => el !== action.payload
+              (el) => el !== currentCard
             )
+            state.customProduct.price -= currentCard.price
           }
           break
         case 'sauces':
           if (currentCard.selected) {
             if (
               state.customProduct.saucesId.length === 3 &&
-              !state.customProduct.saucesId.includes(action.payload._id)
+              !state.customProduct.saucesId.includes(currentCard._id)
             ) {
               alert('Вы выбрали максимальное кол-во соусов')
               break
             }
-            state.customProduct.saucesId.push(action.payload._id)
-            state.customProduct.sauces.push(action.payload)
+            state.customProduct.saucesId.push(currentCard._id)
+            state.customProduct.sauces.push(currentCard)
+            state.customProduct.price += currentCard.price
           } else {
             state.customProduct.saucesId = state.customProduct.saucesId.filter(
-              (el) => el !== action.payload._id
+              (el) => el !== currentCard._id
             )
             state.customProduct.sauces = state.customProduct.sauces.filter(
-              (el) => el !== action.payload
+              (el) => el !== currentCard
             )
+            state.customProduct.price -= currentCard.price
           }
           break
         case 'fillings':
           if (currentCard.selected) {
-            state.customProduct.fillingsId.push(action.payload._id)
-            state.customProduct.fillings.push(action.payload)
+            state.customProduct.fillingsId.push(currentCard._id)
+            state.customProduct.fillings.push(currentCard)
+            state.customProduct.price += currentCard.price
           } else {
             state.customProduct.fillingsId = state.customProduct.fillingsId.filter(
-              (el) => el !== action.payload._id
+              (el) => el !== currentCard._id
             )
             state.customProduct.fillings = state.customProduct.fillings.filter(
-              (el) => el !== action.payload
+              (el) => el !== currentCard
             )
+            state.customProduct.price -= currentCard.price
           }
           break
       }

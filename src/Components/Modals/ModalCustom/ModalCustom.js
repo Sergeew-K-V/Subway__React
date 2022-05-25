@@ -32,7 +32,15 @@ function ModalCustom({ setModalCustomActive }) {
   })
   const { request } = useHttp()
   const dispatch = useDispatch()
-
+  useEffect(() => {
+    console.log('hehehehe')
+  }, [
+    customProduct.size,
+    customProduct.bread,
+    customProduct.vegetables,
+    customProduct.sauces,
+    customProduct.fillings,
+  ])
   // const [arrayOfCards, setArrayOfCards] = useState([])
   const [categoryFillings, setCategoryFillings] = useState('size')
   const [loading, setLoading] = useState(false)
