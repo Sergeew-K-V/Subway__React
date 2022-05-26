@@ -55,11 +55,9 @@ export const modalCustomState = createSlice({
       if (state.customProduct.quantity !== 0) {
         const calculatedPrice = state.customProduct.price * state.customProduct.quantity
         state.customProduct.price = calculatedPrice
-        console.log('getTotalPriceOnSending of modal')
       }
     },
     selectCard: (state, action) => {
-      console.log('id card ', action.payload._id)
       const currentCard = state.arrayOfCards.find((el) => el._id === action.payload._id)
       currentCard.selected = !currentCard.selected
       switch (currentCard.fillingsType) {
@@ -138,11 +136,6 @@ export const modalCustomState = createSlice({
           }
           break
       }
-      // console.log('1', state.customProduct.size)
-      // console.log('2', state.customProduct.bread)
-      // console.log('3', state.customProduct.vegetables)
-      // console.log('4', state.customProduct.sauces)
-      // console.log('5', state.customProduct.fillings)
     },
   },
 })
