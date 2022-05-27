@@ -22,9 +22,11 @@ async function startServer() {
 
     app.use(express.json({ extended: true }))
     app.use(express.urlencoded({ extended: false }))
+
     app.use(fillingsRouter)
     app.use(productsRouter)
-    app.use('/static', express.static('server/static'))
+
+    app.use(express.static('server/static'))
     /*
      * GET /fillings
      * GET /fillings/:id
@@ -37,6 +39,8 @@ async function startServer() {
     app.listen(PORT, () => {
       console.log(`Example app listening on port ${PORT}`)
     })
+
+    app.use((error, req, res, next) => {})
   } catch (error) {}
 }
 

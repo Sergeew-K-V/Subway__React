@@ -29,7 +29,7 @@ const CreateFilling = async (req, res, next) => {
     }
     const filling = await Filling.create({ ...req.body, imageFile })
 
-    res.status(201).json({ message: `The filling ${name} was created succesfully`, filling })
+    return res.status(201).json({ message: `The filling ${name} was created succesfully`, filling })
   } catch (error) {
     res.status(500).json({ message: `Error ${error}` })
   }
@@ -45,4 +45,3 @@ module.exports = {
   CreateFilling,
   CreateFillingCheck,
 }
-//https://www.youtube.com/watch?v=ivDjWYcKDZI&t=1s

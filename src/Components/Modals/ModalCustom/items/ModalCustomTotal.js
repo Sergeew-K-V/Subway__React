@@ -2,6 +2,8 @@ import React from 'react'
 import resultProduct from '../../../../img/result_sandwich.jpg'
 
 function ModalCustomTotal({ customProduct }) {
+  const { size } = customProduct
+
   return (
     <div className='modal__content-total' id='modal-summary'>
       <div className='content-total__block'>
@@ -18,11 +20,7 @@ function ModalCustomTotal({ customProduct }) {
             <div className='middle__size middle__item'>
               <span>
                 <strong>Размер:</strong>{' '}
-                {customProduct.size === '' ? (
-                  ' Размер не был выбран!'
-                ) : (
-                  <span> {customProduct.size}</span>
-                )}
+                {size === '' ? ' Размер не был выбран!' : <span> {size}</span>}
               </span>
             </div>
             <div className='middle__bread middle__item'>
