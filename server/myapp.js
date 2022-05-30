@@ -9,7 +9,7 @@ if (envData.error) {
 }
 
 const mongoose = require('mongoose')
-const mongoDb = `mongodb://127.0.0.1:27017/${process.env.DB_NAME}`
+const mongoDb = process.env.DB_HTPP + '://' + process.env.DB_PORT + '/' + process.env.DB_NAME
 
 const fillingsRouter = require('./routers/fillingsRoute')
 const productsRouter = require('./routers/productsRoute')
@@ -41,7 +41,9 @@ async function startServer() {
     })
 
     app.use((error, req, res, next) => {})
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(error)
+  }
 }
 
 startServer()
