@@ -9,7 +9,7 @@ if (envData.error) {
 }
 
 const mongoose = require('mongoose')
-const mongoDb = process.env.DB_HTPP + '://' + process.env.DB_PORT + '/' + process.env.DB_NAME
+const mongoDb = process.env.DB_HTTP + '://' + process.env.DB_PORT + '/' + process.env.DB_NAME
 
 const fillingsRouter = require('./routers/fillingsRoute')
 const productsRouter = require('./routers/productsRoute')
