@@ -38,7 +38,9 @@ const GetAllFilling = async (req, res) => {
   try {
     const fillings = await Filling.find({ fillingsType: req.query.category })
     return res.json({ fillings })
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ message: `Error ${error}` })
+  }
 }
 module.exports = {
   GetAllFilling,

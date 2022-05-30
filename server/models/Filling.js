@@ -14,5 +14,3 @@ const schemaOfFillings = new Schema({
 })
 
 module.exports = mongoose.model('Filling', schemaOfFillings)
-
-// https://developer.mozilla.org/ru/docs/Learn/Server-side/Express_Nodejs/mongoose
