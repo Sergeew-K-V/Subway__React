@@ -13,9 +13,7 @@ import {
 } from '../../redux/productState'
 
 function Product({ product }) {
-  const serverUrl = config.serverUrl
   const dispatch = useDispatch()
-  // const [quantity, setQuantity] = useState(product.quantity)
 
   return (
     <div className='subway__block' id={product._id}>
@@ -25,7 +23,7 @@ function Product({ product }) {
             <img src={LOGO} alt='Logo market' />
           </div>
           <div className='subway__img-logo'>
-            <img src={serverUrl + product.imageFile} alt='Image of product' />
+            <img src={config.serverUrl + product.imageFile} alt='Image of product' />
           </div>
           <div className='subway__title'>{product.name}</div>
         </div>

@@ -22,6 +22,8 @@ const CreateProduct = async (req, res, next) => {
     const { name } = req.body
     const imageFile = pathFormater(req.file.path)
 
+    // console.log('imageFile', imageFile)
+    // throw new Error()
     const existProduct = await Product.findOne({ name, productsType: req.query.category })
 
     if (existProduct) {

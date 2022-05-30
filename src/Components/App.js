@@ -18,17 +18,6 @@ function App() {
 
   return (
     <div className='app'>
-      {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}
-      {modalFillingsActive && (
-        <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
-      )}
-      {modalProductsActive && (
-        <ModalProducts
-          setPosted={setPosted}
-          posted={posted}
-          setModalProductsActive={setModalProductsActive}
-        ></ModalProducts>
-      )}
       <Header></Header>
       <main className='main'>
         <div className='container-big'>
@@ -44,6 +33,17 @@ function App() {
           </div>
         </div>
       </main>
+      {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}
+      {modalFillingsActive && (
+        <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
+      )}
+      {modalProductsActive && (
+        <ModalProducts
+          setPosted={setPosted}
+          posted={posted}
+          setModalProductsActive={setModalProductsActive}
+        ></ModalProducts>
+      )}
     </div>
   )
 }

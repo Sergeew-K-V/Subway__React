@@ -21,7 +21,6 @@ const CreateFilling = async (req, res, next) => {
 
     const { name } = req.body
     const imageFile = pathFormater(req.file.path)
-
     const existFilling = await Filling.findOne({ name, fillingsType: req.query.category })
 
     if (existFilling) {
