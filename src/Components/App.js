@@ -3,10 +3,9 @@ import Header from './Header'
 import Main from './Main/Main'
 import Navbar from './Navbar/Navbar'
 import ModalCustom from './Modals/ModalCustom/ModalCustom'
-import ModalFillings from './Modals/ModalFillings'
-import ModalProducts from './Modals/ModalProducts'
 
 import '../css/app.css'
+import ModalTemplateBtn from './Modals/ModalTemplateBtn'
 
 function App() {
   const [modalFillingsActive, setModalFillingsActive] = useState(false)
@@ -35,14 +34,18 @@ function App() {
       </main>
       {modalCustomActive && <ModalCustom setModalCustomActive={setModalCustomActive}></ModalCustom>}
       {modalFillingsActive && (
-        <ModalFillings setModalFillingsActive={setModalFillingsActive}></ModalFillings>
+        <ModalTemplateBtn
+          setModalActive={setModalFillingsActive}
+          typeOfGood={'fillings'}
+        ></ModalTemplateBtn>
       )}
       {modalProductsActive && (
-        <ModalProducts
+        <ModalTemplateBtn
           setPosted={setPosted}
           posted={posted}
-          setModalProductsActive={setModalProductsActive}
-        ></ModalProducts>
+          setModalActive={setModalProductsActive}
+          typeOfGood={'product'}
+        ></ModalTemplateBtn>
       )}
     </div>
   )

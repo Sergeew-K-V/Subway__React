@@ -26,9 +26,9 @@ function ModalProducts({ setModalProductsActive, setPosted, posted }) {
   }
   const clearForm = () => {
     setForm(
-      (form.name = null),
-      (form.price = null),
-      (form.description = null),
+      (form.name = ''),
+      (form.price = ''),
+      (form.description = ''),
       (form.productsType = 'pizza')
     )
   }

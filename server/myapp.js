@@ -35,9 +35,7 @@ async function startServer() {
     app.use((error, req, res, next) => {
       throw new Error(error)
     })
-  } catch (error) {
-    throw new Error(error)
-  }
+  } catch (error) {}
 }
 
 startServer()
