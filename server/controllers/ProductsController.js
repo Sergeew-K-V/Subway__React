@@ -24,6 +24,7 @@ const CreateProduct = async (req, res, next) => {
 
     // console.log('imageFile', imageFile)
     // throw new Error()
+
     const existProduct = await Product.findOne({ name, productsType: req.query.category })
 
     if (existProduct) {
