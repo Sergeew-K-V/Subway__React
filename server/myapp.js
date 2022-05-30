@@ -27,14 +27,6 @@ async function startServer() {
     app.use(productsRouter)
 
     app.use(express.static('server/static'))
-    /*
-     * GET /fillings
-     * GET /fillings/:id
-     * POST /fillings
-     * PATCH /fillings/:id
-     * DELETE /fillings/:id
-     *
-     */
 
     app.listen(PORT, () => {
       console.log(`Example app listening on port ${PORT}`)

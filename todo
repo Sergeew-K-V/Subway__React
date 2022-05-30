@@ -1,16 +1,15 @@
-redux -> initState
-redux - action, for fetch products and set to state
+// redux -> initState
+// redux - action, for fetch products and set to state
 
-useSelector ??? what is it?
+// useSelector ??? what is it?
 
-отдельные папки со статикой прям рядом с компонентом +
-сделать шаблон кнопки и потом в него как параметры передавать и вызывать - должен быть по итогу один каркас +
-сделать отдельные компоненты для footer моделки кастом +
-поправить все в один стиль +
-нужно стилизовать инпут form
+// отдельные папки со статикой прям рядом с компонентом +
+// сделать шаблон кнопки и потом в него как параметры передавать и вызывать - должен быть по итогу один каркас +
+// сделать отдельные компоненты для footer моделки кастом +
+// поправить все в один стиль +
 write another useHttp for useHttpTimeouted
 
 // .env, dotenv+
 // port, db_name, db_user, db_password+
 // classNames, styled-component
-redux toolkit
+// redux toolkit

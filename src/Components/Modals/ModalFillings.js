@@ -1,6 +1,7 @@
 import react, { useEffect, useState } from 'react'
 import '../../css/modal-fillings.css'
 import { useHttp } from '../../hooks/http.hook'
+import ModalTemplateBtn from './ModalTemplateBtn'
 
 function ModalFillings({ setModalFillingsActive }) {
   const formData = new FormData()
@@ -42,83 +43,14 @@ function ModalFillings({ setModalFillingsActive }) {
     } catch (e) {}
   }
   return (
-    <div className='modal-fillings'>
-      <form
-        encType='multipart/form-data'
-        className='modal-fillings__form'
-        onSubmit={(e) => {
-          e.preventDefault()
-        }}
-      >
-        <div className='modal-fillings__content'>
-          <div
-            className='modal-fillings__close'
-            onClick={() => {
-              setModalFillingsActive(false)
-            }}
-          >
-            <span></span>
-          </div>
-          <p className='modal-fillings__item'>Название</p>
-          <input
-            type='text'
-            value={form.name}
-            placeholder='Введите название'
-            className='modal-fillings__input modal-fillings__item'
-            name='name'
-            onChange={changeHandler}
-          />
-          <p className='modal-fillings__item'>Цена</p>
-          <input
-            type='number'
-            value={form.price}
-            placeholder='Введите цену'
-            className='modal-fillings__input modal-fillings__item'
-            name='price'
-            onChange={changeHandler}
-          />
-          <p className='modal-fillings__item'>Тип начинки</p>
-          <select
-            className='modal-fillings__item modal-fillings__select'
-            name='fillingsType'
-            value={form.fillingsType}
-            onChange={changeHandler}
-          >
-            <option value='size' key='sizes'>
-              Размер
-            </option>
-            <option value='bread' key='breads'>
-              Хлеб
-            </option>
-            <option value='vegetables' key='vegentables'>
-              Овощи
-            </option>
-            <option value='sauces' key='sauces'>
-              Соус
-            </option>
-            <option value='fillings' key='fillings'>
-              Начинка
-            </option>
-          </select>
-          <p className='modal-fillings__item'>Картинка</p>
-          <input
-            type='file'
-            placeholder='Добавте картинку'
-            className='modal-fillings__input modal-fillings__item'
-            name='imageFile'
-            onChange={changeHandler}
-          />
-          <button
-            className='modal-fillings__btn modal-fillings__item modal__btn'
-            onClick={() => {
-              postHandler()
-            }}
-          >
-            Добавить
-          </button>
-        </div>
-      </form>
-    </div>
+    <ModalTemplateBtn
+      changeHandler={changeHandler}
+      postHandler={postHandler}
+      setModalClose={setModalFillingsActive}
+      name={form.name}
+      price={form.price}
+      type={form.fillingsType}
+    ></ModalTemplateBtn>
   )
 }
 

@@ -2,11 +2,6 @@ How to start mongoDB ->
 
 In terminal: (MAC OS)
 1: mongod
-2: mongo --host localhost:27017
 
 (Windows)
-1: "C:\Program Files\MongoDB\Server\5.0\bin\mongod.exe" --dbpath="c:\data\db"  (http://127.0.0.1:27017/)
-2: https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/ or https://www.youtube.com/watch?v=xwr3azx0Gf0
-
-1: mongosh.exe ( mongodb://127.0.0.1:27017/)
-https://www.mongodb.com/docs/mongodb-shell/connect/#std-label-mdb-shell-connect
+1: mongosh.exe 

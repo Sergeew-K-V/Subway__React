@@ -11,9 +11,10 @@ export const useHttp = () => {
     setLoading(true)
     try {
       if (body) {
-        // body = JSON.stringify(body)
-        // headers['Content-Type'] = 'application/json'
-        // headers['Content-Type'] = 'multipart/form-data'
+        /* body = JSON.stringify(body)
+         * headers['Content-Type'] = 'application/json'
+         * headers['Content-Type'] = 'multipart/form-data'
+         * */
       }
       const responce = await fetch(url, {
         method,
@@ -22,7 +23,6 @@ export const useHttp = () => {
       })
       const data = await responce.json()
       if (!responce.ok) {
-        alert(data.message.error)
         throw new Error(data.message || 'Something was going wrong')
       }
       setLoading(false)

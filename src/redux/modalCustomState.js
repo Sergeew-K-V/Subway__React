@@ -61,7 +61,6 @@ export const modalCustomState = createSlice({
       const currentCard = state.arrayOfCards.find((el) => el._id === action.payload._id)
       currentCard.selected = !currentCard.selected
       switch (currentCard.fillingsType) {
-        //нужно дописать логику, что максимально один выбор
         case 'size':
           if (currentCard.selected) {
             state.customProduct.sizeId = currentCard._id
