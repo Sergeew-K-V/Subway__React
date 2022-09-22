@@ -5,9 +5,9 @@ const pathFormater = (str) => {
   return formatedStr
 
   //Windows
-  const formatedStrWin = str.slice(str.indexOf('static') + 7) // path.sep
-  console.log('formatedStrWin', formatedStrWin)
-  return formatedStrWin
+  // const formatedStrWin = str.slice(str.indexOf('static') + 7) // path.sep
+  // console.log('formatedStrWin', formatedStrWin)
+  // return formatedStrWin
 }
 module.exports = {
   pathFormater,

@@ -6,13 +6,7 @@ import Fillings from './Buttons/Fillings'
 import ProductBtn from './Buttons/ProductBtn'
 import '../../css/navbar.css'
 
-function Navbar({
-  setModalFillingsActive,
-  setModalProductsActive,
-  setModalCustomActive,
-  category,
-  setCategory,
-}) {
+function Navbar({ setModalFillingsActive, setModalProductsActive, setModalCustomActive, category, setCategory }) {
   return (
     <div className='navbar__block'>
       <div className='navbar__top'>
